@@ -5,7 +5,6 @@ public class Payments {
 
     private boolean paymentStatus = false;
 
-    // Process the payment
     public void makePayment() {
         if (!paymentStatus) {
             System.out.println("Payment completed successfully.");
@@ -15,7 +14,6 @@ public class Payments {
         }
     }
 
-    // Cancel the payment
     public void cancelPayment() {
         if (paymentStatus) {
             System.out.println("Payment has been canceled and refunded.");
@@ -25,7 +23,6 @@ public class Payments {
         }
     }
 
-    // Optional: check status
     public boolean isPaymentDone() {
         return paymentStatus;
     }

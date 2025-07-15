@@ -15,10 +15,8 @@ public class ShoppingCart {
     public void startShopping() {
         System.out.println("🛒 Welcome to the Shopping App!\n");
 
-        // Step 1: Create profile
         profile.createProfile();
 
-        // Step 2: Add items to cart
         cart.addItem("Shoes", 2499);
         cart.addItem("Watch", 1299);
 

@@ -4,7 +4,6 @@ public class Orders {
 
     private boolean orderPlaced = false;
 
-    // Place the order
     public void placeOrder() {
         if (!orderPlaced) {
             orderPlaced = true;
@@ -14,7 +13,6 @@ public class Orders {
         }
     }
 
-    // Cancel the order
     public void cancelOrder() {
         if (orderPlaced) {
             orderPlaced = false;
@@ -24,7 +22,6 @@ public class Orders {
         }
     }
 
-    // Track the order
     public void trackOrder() {
         if (orderPlaced) {
             System.out.println("📦 Your order is being processed and will be shipped soon.");
@@ -33,7 +30,6 @@ public class Orders {
         }
     }
 
-    // Optional: for internal use
     public boolean isOrderPlaced() {
         return orderPlaced;
     }
