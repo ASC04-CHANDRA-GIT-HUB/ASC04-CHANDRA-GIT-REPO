@@ -9,7 +9,7 @@ public class ArrayListEx{
         Integer x=null;
         integerTypes();
         numberTypes();
-
+        workingWithArrayList();
     }
     private static void rawTypes(){
         //ArrayList without generics( raw type )
@@ -59,5 +59,41 @@ public class ArrayListEx{
         numberList.add(87.64);
         numberList.add(null);
         System.out.println(numberList);
+    }
+
+    public static void  workingWithArrayList(){
+        ArrayList<String> shoppingCartList=new ArrayList<String>();
+        //methods from collection interface
+        shoppingCartList.add("Man's search for meaning");
+        shoppingCartList.add("Start with Why");
+        shoppingCartList.add("Java");
+        shoppingCartList.add("Start with Why");
+        shoppingCartList.add("Deep work");
+        //The set method replaces the element at the specified position
+        //with the specified element and returns the old element
+        shoppingCartList.set(1,"Start with Why - Updated");
+        System.out.println("1 : "+shoppingCartList.get(3));
+        shoppingCartList.remove(3);
+        System.out.println(shoppingCartList);
+        shoppingCartList.add(null); //adding null element
+        shoppingCartList.add(null); //adding another null element
+        System.out.println(shoppingCartList);
+
+        for(String item:shoppingCartList){  //iterator
+            System.out.println(item);
+        }
+
+        System.out.println("Size of Shopping cart: "+shoppingCartList.size());
+        System.out.println("Before removing items: "+shoppingCartList);
+
+        ArrayList<String> removeItemsList=new ArrayList<String>();
+        removeItemsList.add(null);
+        removeItemsList.add("Deep work");
+        removeItemsList.add("Start with Why");
+        removeItemsList.add("Java");
+
+        //Removes all the elements in removeItemsList from shopping CartList
+        shoppingCartList.removeAll(removeItemsList);
+        System.out.println("After removing items: "+shoppingCartList);
     }
 }
