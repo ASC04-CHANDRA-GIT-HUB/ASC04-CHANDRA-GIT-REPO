@@ -13,7 +13,6 @@ public class ArrayListEx{
     }
     private static void rawTypes(){
         //ArrayList without generics( raw type )
-
         ArrayList colorList = new ArrayList();
         colorList.add("Red");
         colorList.add(null);
