@@ -11,8 +11,12 @@ hobbies text
 insert into friends(id,friendname,hobbies)
 values (1,'baahubali','sword fight');
 
+--insert friend
 insert into friends(id,friendname,hobbies)
-values (2,'devasena','archery'),(4,'bichhal dev','gadha yuddha');
+values (2,'devasena','archery');
+
+insert into friends(id,friendname,hobbies)
+values (2,'devasena','archery'),(3,'ballal dev','vedashastra'),(4,'bichhal dev','gadha yuddha');
 
 --updated by id
 update friends
