@@ -2,7 +2,8 @@ package com.demo.exception;
 
 public class handledException{
     public static void main(String args[]){
-        int i=100;
+        int i=10;
+        @SuppressWarnings("unused")
         int res=0;
         System.out.println("divide by 0");
         try{

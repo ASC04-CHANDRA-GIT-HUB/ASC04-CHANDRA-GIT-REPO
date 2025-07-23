@@ -6,13 +6,16 @@ public class ArrayListEx{
     public static void main(String[] args){
         rawTypes();
         genericTypes();
+        @SuppressWarnings("unused")
         Integer x=null;
         integerTypes();
         numberTypes();
         workingWithArrayList();
     }
+    @SuppressWarnings("unchecked")
     private static void rawTypes(){
         //ArrayList without generics( raw type )
+        @SuppressWarnings("rawtypes")
         ArrayList colorList = new ArrayList();
         colorList.add("Red");
         colorList.add(null);

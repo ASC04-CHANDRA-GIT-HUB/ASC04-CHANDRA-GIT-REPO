@@ -3,6 +3,7 @@ package com.demo.exception;
 public class multipleException{
     public static void main(String args[]){
         String colors[]={"Red","Green","Blue"};
+        @SuppressWarnings("unused")
         Calculator calculator=null;
         System.out.println("Normal calculator");
         try{
@@ -12,7 +13,7 @@ public class multipleException{
         }
         catch(ArrayIndexOutOfBoundsException aioobe){
             try {
-                calculator.add(50,50);
+                Calculator.add(50,50);
             } catch (Exception e) {
                 System.out.println("couldnt process null exception");
             }
