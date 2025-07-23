@@ -5,6 +5,7 @@ public class FunctionalInterfaceEx{
         //anonymous class implementation
         //anonymous classes are used to create instances of functional interfaces
         //without explicitly defining a class
+        @SuppressWarnings("unused")
         Discount summerSale=new Discount(){
             @Override
             public double apply(double price){
