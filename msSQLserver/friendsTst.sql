@@ -11,5 +11,5 @@ VALUES
 (8, 'Alice Smith', 'alice@example.com', 9123456789),
 (9, 'Bob Johnson', 'bob@example.com', 9988776655);
 
-
+select * from friendsTst;
 delete from friendsTst where ID in (7,8,9);
