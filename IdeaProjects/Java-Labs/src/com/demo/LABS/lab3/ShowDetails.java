@@ -129,9 +129,11 @@ class MovieTest {
         i1.displayDetails();
         System.out.println();
 
-        // System.out.println("Total movies in the library: " + ShowDetails.getMoviesCount());
+        
 
         //MovieId example
         System.out.println("Generated movieId: " + testMovie.getMovieId()); // Expected: Hello_6
+
+        System.out.println("Total movies in the library: " + ShowDetails.getMoviesCount());
     }
 }
