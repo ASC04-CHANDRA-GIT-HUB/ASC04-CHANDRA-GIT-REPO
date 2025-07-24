@@ -128,6 +128,7 @@ class MovieTest {
         System.out.println();
         i1.displayDetails();
         System.out.println();
+        // 
 
 
         System.out.println("Total movies in the library: " + ShowDetails.getMoviesCount());
