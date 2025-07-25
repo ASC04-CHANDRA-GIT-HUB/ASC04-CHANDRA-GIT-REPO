@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Spooky Application Form</title>
+    <style>
+        body {
+            font-family: 'Creepster', Arial, sans-serif;
+            background: linear-gradient(120deg, #232526, #000000 80%);
+            color: #e74c3c;
+            padding: 20px;
+            margin: 0;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+        h2 {
+            color: #ff4b2b;
+            text-align: center;
+            font-family: 'Creepster', cursive;
+            font-size: 2.5em;
+            letter-spacing: 2px;
+            text-shadow: 4px 4px 10px #000, 0 0 20px #ffbd39;
+            margin-bottom: 1em;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(33, 24, 44, 0.90);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 30px 5px #320028, 0 10px 40px #000000;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #ffbd39;
+            text-shadow: 1px 1px 5px #320028;
+            letter-spacing: 1px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 22px;
+            border: 2px solid #6e2142;
+            border-radius: 4px;
+            font-size: 1em;
+            background: #241725;
+            color: #ffbd39;
+            font-family: inherit;
+            transition: border-color 0.3s, background 0.3s;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        textarea:focus {
+            border-color: #e74c3c;
+            background: #14040c;
+            outline: none;
+        }
+        input[type="radio"] {
+            margin-right: 7px;
+            accent-color: #e74c3c;
+        }
+        .inline-label {
+            display: inline-block;
+            font-weight: normal;
+            color: #ffbd39;
+            margin-right: 25px;
+        }
+        button[type="submit"] {
+            background-color: #e74c3c;
+            color: #fff6eb;
+            border: none;
+            padding: 14px 0;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            font-family: 'Creepster', cursive;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 15px #2b0e11;
+            transition: background 0.2s;
+        }
+        button[type="submit"]:hover {
+            background: linear-gradient(90deg, #14040c 70%, #e74c3c 100%);
+            color: #ffbd39;
+            text-shadow: 0 0 6px #6e2142;
+        }
+        /* Spooky border glow on focus */
+        input:focus, textarea:focus {
+            box-shadow: 0 0 10px 1px #ffbd39;
+        }
+        /* Animated bats */
+        .bat {
+            position: fixed;
+            width: 70px;
+            z-index: 1000;
+            animation: batFly 6s infinite alternate ease-in-out;
+        }
+        .bat1 { top: 10%; left: 20%; animation-delay: 0s;}
+        .bat2 { top: 18%; left: 70%; animation-delay: 1.5s;}
+        @keyframes batFly {
+            0% { transform: translateY(0) scale(1.1); }
+            50% { transform: translateY(-40px) scale(0.8) rotate(-12deg);}
+            100% { transform: translateY(0) scale(1.01);}
+        }
+    </style>
+</head>
+<body>
+    <!-- Spooky bats (emoji for ease, SVGs can be used too) -->
+    <div class="bat bat1">🦇</div>
+    <div class="bat bat2">🦇</div>
+    
+    <h2>Apply to HELL!</h2>
+    <form id="applicationForm">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name... if you dare" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Witch's email" required />
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" placeholder="Ghostly digits" required pattern="[0-9]{10}" title="Enter 10 digit phone number" />
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="Male" required />
+        <label for="male" class="inline-label">Male</label>
+        <input type="radio" id="female" name="gender" value="Female" />
+        <label for="female" class="inline-label">Female</label>
+        <input type="radio" id="other" name="gender" value="Other" />
+        <label for="other" class="inline-label">Other</label>
+
+        <label for="address">Haunted Address:</label>
+        <textarea id="address" name="address" placeholder="Type your crypt address here..." rows="4" cols="50" required></textarea>
+
+        <button type="submit">Send Your Soul</button>
+    </form>
+    <script>
+        document.getElementById('applicationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('👻 Your haunted application has vanished into the shadows!');
+            this.reset();
+            document.getElementById('fullName').focus();
+        });
+    </script>
+</body>
+</html>
