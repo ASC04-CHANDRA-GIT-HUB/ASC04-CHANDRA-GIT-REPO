@@ -1,6 +1,12 @@
 use AdventureWorksLT2022;
 GO
 
+-- WRITE YOUR OWN QUERIES.
+
+--=========
+--Originals
+--=========
+
 -- Query 1: Select all customers
  SELECT * from SalesLT.Customer;
 -- Query 2: Select all customers ordered by first name
@@ -17,8 +23,6 @@ SELECT * from SalesLT.Customer ORDER BY 3 DESC;
 SELECT * from SalesLT.Customer WHERE CustomerID < 6;
 -- Query 8: Select customers with last name 'GUINESS'
 SELECT * from SalesLT.Customer WHERE LastName = 'Gee';
--- Query 9: Select all customers ordered by first name
- SELECT * from SalesLT.Customer ORDER BY FirstName;
 -- Query 10: Select all customers ordered by first name ascending and last name descending
 SELECT * from SalesLT.Customer ORDER BY FirstName ASC, LastName DESC;
 -- Query 11: Select all customers ordered by third column ascending, second column descending
@@ -48,7 +52,7 @@ SELECT ROUND(8.45, 2) FROM SalesLT.SalesOrderDetail;
 -- Query 23: Select rounded value of 8.5 for each row in SalesOrderDetail
 SELECT ROUND(8.5, 2) FROM SalesLT.SalesOrderDetail;
 -- Query 24: Select rounded value of -14.33
-SELECT ROUND(-14.33, 2) FROM SalesLT.SalesOrderDetail;
+SELECT ROUND(-14.33, 2);
 -- Query 25: Select rounded value of 1.234 to 0 decimal places
 SELECT ROUND(1.234,0);
 -- Query 26: Select rounded value of -14.73
@@ -62,7 +66,7 @@ SELECT ROUND(1256.567, -2) AS 'Rounded Value';
 -- Query 30: Select LineTotal from SalesOrderDetail
 Select LineTotal from SalesLT.SalesOrderDetail;
 -- Query 31: Select LineTotal rounded to 0 and 1 decimal places from SalesOrderDetail
-SELECT LineTotal, ROUND(LineTotal, 0), ROUND(LineTotal, 1) FROM Sales;
+SELECT LineTotal, ROUND(LineTotal, 0), ROUND(LineTotal, 1) FROM  SalesLT.SalesOrderDetail;
 -- Query 32: Select floor of 1.2
 SELECT FLOOR(1.2);
 -- Query 33: Select ceiling of 1.2
@@ -78,7 +82,7 @@ SELECT '1' + '1' AS 'ADD';
 -- Query 38: Add string '1A' and '1', alias as 'ADD'
 SELECT '1A' + '1' AS 'ADD';
 -- Query 39: Add string '1A' and 'B', alias as 'ADD'
-
+SELECT '1A' + 'B' AS 'ADD';
 -- Query 40: Add string 'A2' and '1', alias as 'ADD'
 SELECT 'A2' + '1' AS 'ADD';
 -- Query 41: Add string 'A2' and '2', alias as 'ADD'
@@ -93,8 +97,6 @@ SELECT '1' + '1' AS 'CONCATENATE';
 SELECT 'A2' + '2' AS 'CONCATENATE';
 -- Query 46: Concatenate 'RED', ' GREEN', ' BLUE', alias as 'COLORS'
 SELECT 'RED' + ' GREEN' + ' BLUE' AS 'COLORS';
--- Query 47: Select all customers
-SELECT * FROM SalesLT.Customer;
 -- Query 48: Select CustomerID and concatenated full name
 SELECT CustomerID, FirstName + ' ' + LastName AS 'Full Name' FROM SalesLT.Customer;
 -- Query 49: Select first names in lowercase
@@ -105,28 +107,24 @@ SELECT UPPER(FirstName) FROM SalesLT.Customer;
 SELECT SUBSTRING(FirstName, 1, 2) FROM SalesLT.Customer;
 -- Query 52: Select first two letters of first names in lowercase
 SELECT LOWER(SUBSTRING(FirstName, 1, 2)) FROM SalesLT.Customer;
--- Query 53: Select all customers
-SELECT * FROM SalesLT.Customer;
 -- Query 54: Concatenate reversed last and first names
-SELECT REVERSE(LastName) + ' ' + REVERSE(FirstName) FROM SalesLT.Customer
+SELECT REVERSE(LastName) + ' ' + REVERSE(FirstName) FROM SalesLT.Customer;
 -- Query 55: Reverse concatenated full name, alias as 'REVERSE FULL NAME'
-SELECT REVERSE(FirstName + ' ' + LastName) AS 'REVERSE FULL NAME' FROM Sales
+SELECT REVERSE(FirstName + ' ' + LastName) AS 'REVERSE FULL NAME' FROM SalesLT.Customer;
 -- Query 56: Concatenate last name and first initial from actor table
-SELECT LastName + ' ' + SUBSTRING(FirstName, 1, 1) FROM SalesLT
+SELECT LastName + ' ' + SUBSTRING(FirstName, 1, 1) FROM SalesLT.Customer;
 -- Query 57: Select reversed first names
 SELECT REVERSE(FirstName) FROM SalesLT.Customer;
 -- Query 58: Select ModifiedDate from Customer
 SELECT ModifiedDate FROM SalesLT.Customer;
 -- Query 59: Format ModifiedDate as mm/dd/yy, alias as 'LAST UPDATE'
-SELECT CONVERT(VARCHAR(10), ModifiedDate, 101) AS 'LAST UPDATE' FROM Sales;
+SELECT CONVERT(VARCHAR(10), ModifiedDate, 101) AS 'LAST UPDATE' FROM SalesLT.Customer;
 -- Query 60: Format ModifiedDate as mm-dd-yy, alias as 'LAST UPDATE'
-SELECT CONVERT(VARCHAR(10), ModifiedDate, 101) AS 'LAST UPDATE' FROM Sales;
+SELECT CONVERT(VARCHAR(10), ModifiedDate, 101) AS 'LAST UPDATE' FROM SalesLT.Customer;
 -- Query 61: Select week number from ModifiedDate
 SELECT DATEPART(WEEK, ModifiedDate) FROM SalesLT.Customer;
 -- Query 62: Select SalesOrderDetail_DATE from SalesOrderDetail
-
--- Query 63: Select all customers
-SELECT * FROM SalesLT.Customer;
+SELECT ModifiedDate FROM SalesLT.SalesOrderDetail;
 -- Query 64: Select first names ordered by first name
 SELECT FirstName FROM SalesLT.Customer ORDER BY FirstName;
 -- Query 65: Select distinct first names ordered by first name
@@ -154,7 +152,8 @@ SELECT * FROM SalesLT.Customer WHERE FirstName <= 'AL%';
 -- Query 76: Select customers with first name length equal to 4
 SELECT * FROM SalesLT.Customer WHERE LEN(FirstName) = 4;
 -- Query 77: Select actors with first name of exactly 4 characters  
-SELECT * FROM SalesLT.Actor WHERE LEN(FirstName) = 4;
+--actors are the Customers
+SELECT * FROM SalesLT.Customer WHERE LEN(FirstName) = 4;
 -- Query 78: Select customers with last name ending in 'y' and length 5, ordered by first name
 SELECT * FROM SalesLT.Customer WHERE LastName LIKE '%y' AND LEN(LastName) = 5;
 -- Query 79: Select customers with last name length 5 and ending with 'y', ordered by last name
@@ -201,6 +200,21 @@ SELECT * FROM SalesLT.Address WHERE AddressLine2 IS NOT NULL;
 SELECT * FROM SalesLT.Address WHERE AddressLine2 = '';
 -- Returns the total number of addresses in the Address table
 SELECT COUNT(AddressID) FROM SalesLT.Address;
+
+
+
+--==========
+--Duplicate
+--==========
+
+-- Query 9: Select all customers ordered by first name
+ SELECT * from SalesLT.Customer ORDER BY FirstName;
+-- Query 47: Select all customers
+SELECT * FROM SalesLT.Customer;
+-- Query 53: Select all customers
+SELECT * FROM SalesLT.Customer;
+-- Query 63: Select all customers
+SELECT * FROM SalesLT.Customer;
 -- Query 91: Set AddressLine2 to NULL for all addresses
 UPDATE SalesLT.Address SET AddressLine2 = NULL;
 -- Query 92: Set AddressLine2 to 'DEMO Address' where Address_ID is 1   
@@ -220,5 +234,3 @@ SELECT * FROM SalesLT.Address WHERE AddressLine2 IS NOT NULL;
 -- Query 99: Select addresses where AddressLine2 is empty string
 SELECT * FROM SalesLT.Address WHERE AddressLine2 = '';
 
-
--- WRITE YOUR OWN QUERIES.
