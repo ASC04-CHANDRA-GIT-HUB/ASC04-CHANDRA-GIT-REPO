@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class gflights {
     public static void main(String[] args) {
+        @SuppressWarnings("resource")
         Scanner sc = new Scanner(System.in);
         BookingRepository repo = new BookingRepository();
         int choice;

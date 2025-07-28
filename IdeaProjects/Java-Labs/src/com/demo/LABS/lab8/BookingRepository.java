@@ -11,7 +11,7 @@ public class BookingRepository {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn = DriverManager.getConnection(
-                "jdbc:sqlserver://localhost:1433;database=yourDatabaseName;user=sa;password=sqlserver;encrypt=true;trustServerCertificate=true"
+                "jdbc:sqlserver://localhost:1433;database=myfriends_db;user=sa;password=sqlserver;encrypt=true;trustServerCertificate=true"
             );
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,5 +78,12 @@ public class BookingRepository {
         deleteBooking(updated.getBookingId());
         insertBooking(updated);
         System.out.println("✏️ Booking updated successfully.");
+    }
+
+    public void updateBooking(int updateId, String newSource) {
+    }
+
+    public void readBookings() {
+
     }
 }
