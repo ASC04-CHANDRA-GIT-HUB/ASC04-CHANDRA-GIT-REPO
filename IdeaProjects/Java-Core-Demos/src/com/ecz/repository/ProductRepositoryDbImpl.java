@@ -11,6 +11,7 @@ import com.ecz.model.Product;
 
 import static java.sql.DriverManager.getConnection;
 
+@SuppressWarnings("unused")
 public class ProductRepositoryDbImpl implements ProductRepository{
     @Override
     public boolean addProductToCart(Product product){
@@ -42,9 +43,13 @@ public class ProductRepositoryDbImpl implements ProductRepository{
                 Statement statement =connection.createStatement();
                 ResultSet resultSet= statement.executeQuery("SELECT * FROM product");
                 while(resultSet.next()){
+                    @SuppressWarnings("unused")
                     String id = resultSet.getString("id");
+                    @SuppressWarnings("unused")
                     String name = resultSet.getString("name");
+                    @SuppressWarnings("unused")
                     double price = resultSet.getDouble("price");
+                    @SuppressWarnings("unused")
                     int quantity = resultSet.getInt("quantity");
                 }
             } catch (Exception e) {

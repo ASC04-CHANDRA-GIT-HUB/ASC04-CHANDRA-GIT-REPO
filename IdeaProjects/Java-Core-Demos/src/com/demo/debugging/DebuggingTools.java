@@ -12,6 +12,7 @@ public class DebuggingTools {
     }
     public static double  rakhiBonus(){
         int rakhi = 1000;
+        @SuppressWarnings("unused")
         int i = 100/0;
         int sweets = -500;
         return rakhi+sweets + randomBonus();

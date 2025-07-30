@@ -2,6 +2,7 @@ package com.demo.strings;
 
 import java.util.Arrays;
 
+@SuppressWarnings("unused")
 public class Regex {
 
     public static void main(String[] args) {
