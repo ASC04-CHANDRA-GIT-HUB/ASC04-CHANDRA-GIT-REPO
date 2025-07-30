@@ -44,11 +44,11 @@ public class ProductRepositoryDbImpl implements ProductRepository{
                 while(resultSet.next()){
                     String id = resultSet.getString("id");
                     String name = resultSet.getString("name");
-                    String price = resultSet.getDouble("price");
-                    String quantity = resultSet.getInt("quantity");
+                    double price = resultSet.getDouble("price");
+                    int quantity = resultSet.getInt("quantity");
                 }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
-
-
-        }
+            return products;}
 }
