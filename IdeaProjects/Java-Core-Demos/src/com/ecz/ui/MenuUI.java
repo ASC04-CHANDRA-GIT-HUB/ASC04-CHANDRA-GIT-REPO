@@ -12,7 +12,7 @@ public class MenuUI {
     //    What is UI?
 //    UI stands for User Interface. It is the part of the application that the user interacts with
     void accessMenu() {
-        System.out.println("Welcome to ECommerce App!");
+//        System.out.println("Welcome to ECommerce App!");
         System.out.println("1. Add Product");
         System.out.println("2. View Products");
         System.out.println("3. Update Product");

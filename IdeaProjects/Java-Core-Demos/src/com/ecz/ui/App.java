@@ -6,8 +6,10 @@ public class App
     {
         System.out.println("Welcome to ECommerce App!");
         MenuUI menuUI = new MenuUI();
-        menuUI.getAllProducts();
+
+        menuUI.accessMenu();
+        menuUI.addProduct();
 //        menuUI.updateProduct();
-//        menuUI.getAllProducts();
+        menuUI.getAllProducts();
     }
 }
