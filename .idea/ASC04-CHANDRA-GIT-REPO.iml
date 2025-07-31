@@ -5,5 +5,8 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="mssql-jdbc-12.10.1.jre8" level="project" />
+    <orderEntry type="library" name="mssql-jdbc-12.10.1.jre8 (2)" level="project" />
+    <orderEntry type="library" name="mssql-jdbc-12.10.1.jre8 (3)" level="project" />
   </component>
 </module>
