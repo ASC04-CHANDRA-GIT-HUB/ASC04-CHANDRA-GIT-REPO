@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/IdeaProjects.iml" filepath="$PROJECT_DIR$/.idea/IdeaProjects.iml" />
       <module fileurl="file://$PROJECT_DIR$/Java-Core-Demos/Java-Core-Demos.iml" filepath="$PROJECT_DIR$/Java-Core-Demos/Java-Core-Demos.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Java-Ecom-Project/Java-Ecom-Project.iml" filepath="$PROJECT_DIR$/Java-Ecom-Project/Java-Ecom-Project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LayeredArchitecture/Ecommerce/src/main/java/JavaEcomProject/Java-Ecom-Project.iml" filepath="$PROJECT_DIR$/LayeredArchitecture/Ecommerce/src/main/java/JavaEcomProject/Java-Ecom-Project.iml" />
       <module fileurl="file://$PROJECT_DIR$/Java-Labs/Java-Labs.iml" filepath="$PROJECT_DIR$/Java-Labs/Java-Labs.iml" />
     </modules>
   </component>
