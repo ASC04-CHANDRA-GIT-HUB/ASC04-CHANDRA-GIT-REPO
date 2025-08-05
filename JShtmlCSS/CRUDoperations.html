@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operations</title>
+</head>
+<body>
+
+    <h1>User Management</h1>
+
+    <form id="user-form">
+
+        <input type="hidden" id="editing-index" value="-1">
+        <input type="text" id="name" placeholder="Name" value="Ben" required>
+        <input type="email" id="email" placeholder="Email" value="ben@gmail.com" required>
+        
+        <button type="submit">Save</button>
+
+    </form>
+
+    <table id="user-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        
+        <tbody></tbody>
+    
+    </table>
+    <script>
+        let user = [];
+        const userForm = document.getElementById('user-form');
+        const tableBody = document.querySelector('#user-table tbody');
+
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const editingIndexInput = document.getElementById('editing-index');
+    </script>
+</body>
+</html>

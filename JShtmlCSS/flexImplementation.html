@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+    <body style="background-color:rgb(186, 92, 186);">
+        <h1>Our First form</h1>
+        <div style="display: flex; margin-left:50px; margin-top:50px;">
+            <!-- Form box -->
+            <div style="background-color:wheat; width: 500px; height: 600px; border-radius: 10px; padding: 20px;">
+                <form style="margin-left:50px; margin-top:50px; color: white; font-size: 20px; font-family: Arial, sans-serif;">
+                    <div style="height:50px">
+                        Name:
+                        <input type="text" id="user-name"><br></br>
+                        Password:
+                        <input type="password" id="user-password"><br></br>
+                        Gender:
+                        <input type="radio" name="gender">Male 
+                        <input type="radio" name="gender">Female
+                        <input type="radio" name="gender">Prefer not to tell<br></br>
+                        Food Preferences:
+                        <input type="radio" name="food">Veg
+                        <input type="radio" name="food">Eggitarian
+                        <input type="radio" name="food">Non-veg<br></br>
+                        County:
+                        <select name="country">
+                            <option value="india">India</option>
+                            <option value="usa">USA</option>
+                            <option value="uk">UK</option>
+                            <option value="canada">Canada</option>
+                            <option value="canada">Japan</option>
+                            <option value="australia">Australia</option>
+                        </select><br></br>
+                        Phone Number:
+                        <input type="tel" id="user-phone" placeholder="123-456-7890"><br></br>
+                        Date of Birth:
+                        <input type="date" id="user-dob"><br></br>
+                        Email:  
+                        <input type="email" id="user-email" placeholder=""><br></br>
+                        <input type="checkbox" name="terms"> I agree to the terms and conditions<br></br>
+                        <input type="submit" value="Submit">    
+                        <input type="reset" value="Reset">
+                    </div>
+                </form>
+            </div>
+            <!-- Output box -->
+            <div id="form-output" style="background-color:white; color:black; width:350px; min-height:200px; border-radius:10px; margin-left:30px; padding:20px;">
+            </div>
+        </div>
+        <script>
+            document.querySelector('form').addEventListener('submit', outputs);
+            function outputs(event) {
+                event.preventDefault();
+
+                // Get values
+                const name = document.getElementById('user-name').value;
+                const password = document.getElementById('user-password').value;
+                const phone = document.getElementById('user-phone').value;
+                const dob = document.getElementById('user-dob').value;
+                const email = document.getElementById('user-email').value;
+                const gender = document.querySelector('input[name="gender"]:checked')?.nextSibling.textContent.trim() || '';
+                const food = document.querySelector('input[name="food"]:checked')?.nextSibling.textContent.trim() || '';
+                const country = document.querySelector('select[name="country"]').value;
+                const terms = document.querySelector('input[name="terms"]').checked ? "Agreed" : "Not agreed";
+
+                // Show result
+                document.getElementById('form-output').innerHTML = `
+                    <strong>Form Results:</strong><br>
+                    Name: ${name}<br>
+                    Password: ${password}<br>
+                    Phone: ${phone}<br>
+                    Date of Birth: ${dob}<br>
+                    Email: ${email}<br>
+                    Gender: ${gender}<br>
+                    Food Preference: ${food}<br>
+                    Country: ${country}<br>
+                    Terms: ${terms}
+                `;
+            }
+        </script>
+    </body>
+</html>
