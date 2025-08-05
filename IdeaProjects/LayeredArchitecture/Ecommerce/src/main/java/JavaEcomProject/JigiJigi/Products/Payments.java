@@ -1,37 +1,44 @@
 package JavaEcomProject.JigiJigi.Products;
 
-import JavaEcomProject.JigiJigi.dbconn.DBConnection;
-import java.sql.*;
+import java.util.Scanner;
 
 public class Payments {
+    private final Scanner scanner = new Scanner(System.in);
 
-    public void makePayment() {
-        String sql = "INSERT INTO Payments (amount, status) SELECT SUM(price), 'Paid' FROM Cart";
-        try (Connection conn = DBConnection.getConnection();
-             Statement stmt = conn.createStatement()) {
-            int rows = stmt.executeUpdate(sql);
-            if (rows > 0) {
-                System.out.println("💳 Payment successful!");
-            } else {
-                System.out.println("No items in cart to pay for.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public String selectPaymentMethod() {
+        System.out.println("\n=== PAYMENT OPTIONS ===");
+        System.out.println("1. Cash on Delivery (COD)");
+        System.out.println("2. UPI");
+        System.out.println("3. Credit/Debit Card");
+        System.out.print("Choice: ");
+        String choice = scanner.nextLine();
+
+        switch (choice) {
+            case "1":
+                return "COD";
+            case "2":
+                return enterUPIDetails();
+            case "3":
+                return enterCardDetails();
+            default:
+                System.out.println("❌ Invalid choice.");
+                return selectPaymentMethod();
         }
     }
 
-    public void cancelPayment() {
-        String sql = "UPDATE Payments SET status = 'Cancelled' WHERE status = 'Paid'";
-        try (Connection conn = DBConnection.getConnection();
-             Statement stmt = conn.createStatement()) {
-            int rows = stmt.executeUpdate(sql);
-            if (rows > 0) {
-                System.out.println("❌ Payment cancelled.");
-            } else {
-                System.out.println("No payments to cancel.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    private String enterUPIDetails() {
+        System.out.print("Enter UPI ID: ");
+        String upi = scanner.nextLine();
+        return "UPI: " + upi;
+    }
+
+    private String enterCardDetails() {
+        System.out.print("Enter Card Number: ");
+        String cardNo = scanner.nextLine();
+        System.out.print("Enter Expiry (MM/YY): ");
+        String expiry = scanner.nextLine();
+        System.out.print("Enter CVV: ");
+        String cvv = scanner.nextLine();
+        return "Card: " + cardNo + " Exp: " + expiry;
     }
 }
