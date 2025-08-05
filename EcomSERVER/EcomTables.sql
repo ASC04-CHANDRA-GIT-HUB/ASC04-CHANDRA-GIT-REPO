@@ -1,6 +1,8 @@
 -- Drop existing DB if needed (forces deletion)
-IF DB_ID('EcomDB') IS NOT NULL
 use master;
+
+IF DB_ID('EcomDB') IS NOT NULL
+
 BEGIN
     ALTER DATABASE EcomDB SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
     DROP DATABASE EcomDB;
@@ -184,3 +186,13 @@ INSERT INTO Products (ProductName, Category, Price) VALUES
 ('VIP Check-in Luggage', 'Bags', 6999.00),
 ('Targus Laptop Backpack', 'Bags', 3599.00);
 GO
+
+
+select * from Address;
+select * from Cart;
+select * from Orders;
+select * from OrderItems;
+select * from Payments;
+select * from Products;
+select * from Profile;
+select * from Wishlist;
