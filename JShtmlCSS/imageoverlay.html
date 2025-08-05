@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Caption Overlay</title>
+
+  <style>
+    /* Container that wraps the image and the caption */
+    .image-container {
+      position: relative;    /* Allows absolutely positioned elements (like the caption) inside */
+      width:25%;           /* Set a fixed width for consistent layout (can be changed as needed) */
+      margin-bottom: 24px;   /* Add spacing between stacked images */
+    }
+
+    /* Styling for the image itself */
+    .image-container img {
+      width: 100%;                 /* Ensures the image fills the container width */
+      /* display: block;           */
+       /*   Removes bottom white space caused by inline images */
+    }
+
+    /* Styling for the caption that overlays the image */
+    .caption {
+      position: absolute;          /* Position this div absolutely within its container */
+      bottom: 0;                   
+      /* Align the caption to the bottom of the container */
+      width: 100%;                 /* Make the caption span the full width of the container */
+      
+      background: rgba(1, 1, 1, 0.5); 
+      /* Semi-transparent black background for readability */
+      color: cyan;               
+       /* White text to contrast with the dark background */
+      padding-bottom: 10px; padding-top:10px;              
+       /* Add space around the text */
+      text-align: center;         
+       /* Center the caption text horizontally */
+      font-size: 16px; font-weight: bold;            
+      /* Set a readable font size */
+    }
+  </style>
+</head>
+<body>
+  <!-- Image container that holds the image and the caption -->
+  <div class="image-container">
+    <!-- The image itself -->
+    <img src="https://tse2.mm.bing.net/th/id/OIP.mUo9u4F4ZSA-HW5KJkeLIwHaJQ?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Sample Image">
+    <!-- The caption text that appears at the bottom of the image -->
+    <div class="caption">KING kohli</div>
+  </div>
+    <div class="image-container">
+    <!-- The image itself -->
+    <img src="https://wallpapercave.com/wp/wp4548171.jpg" alt="Sample Image">
+    <!-- The caption text that appears at the bottom of the image -->
+    <div class="caption">siiiiiiiiiiiiiiiiuuuuuuuuuuuuuuu</div>
+  </div>
+
+</body>
+</html>
