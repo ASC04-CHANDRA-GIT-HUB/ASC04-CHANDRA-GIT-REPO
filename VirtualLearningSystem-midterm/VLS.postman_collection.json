@@ -215,6 +215,38 @@
 		},
 		{
 			"name": "cartGET",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cart/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cart",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cartDELETE",
 			"request": {
 				"method": "GET",
 				"header": []
