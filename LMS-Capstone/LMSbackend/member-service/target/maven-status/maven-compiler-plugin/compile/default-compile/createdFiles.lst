@@ -1,0 +1,5 @@
+com\lms\memberservice\MemberServiceApplication.class
+com\lms\memberservice\repository\MemberRepository.class
+com\lms\common\util\IdGenerator.class
+com\lms\memberservice\controller\MemberController.class
+com\lms\memberservice\model\Member.class
