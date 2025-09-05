@@ -1,42 +1,33 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../context/AuthContext'
+import React, { useState } from 'react';
+import { login } from '../services/authService';
+import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
-export default function Login() {
-  const { login } = useAuth()
-  const nav = useNavigate()
-  const [email, setEmail] = useState('admin@example.com')
-  const [password, setPassword] = useState('password')
-  const [msg, setMsg] = useState(null)
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const onSubmit = async (e) => {
-    e.preventDefault()
-    try {
-      const res = await login(email, password)
-      setMsg(JSON.stringify(res, null, 2))
-      nav('/')
-    } catch (err) {
-      setMsg(err.response?.data ? JSON.stringify(err.response.data) : String(err))
-    }
-  }
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const res = await login(email, password);
+    console.log(res);
+    navigate('/dashboard');
+  };
 
   return (
-    <div className="container">
-      <div className="card" style={{maxWidth:480, margin:'0 auto'}}>
-        <h2>Login</h2>
-        <form onSubmit={onSubmit}>
-          <div className="space" />
-          <input className="input" value={email} onChange={e=>setEmail(e.target.value)} placeholder="Email" />
-          <div className="space" />
-          <input className="input" value={password} onChange={e=>setPassword(e.target.value)} type="password" placeholder="Password" />
-          <div className="space" />
-          <button className="btn" type="submit">Sign in</button>
+    <>
+      <Navbar />
+      <div className="p-8 max-w-md mx-auto">
+        <h2 className="text-2xl mb-4">Login</h2>
+        <form onSubmit={handleLogin} className="space-y-3">
+          <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
+          <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
+          <button type="submit">Login!</button>
         </form>
-        {msg && (<>
-          <div className="space" />
-          <pre style={{whiteSpace:'pre-wrap'}} className="muted">{msg}</pre>
-        </>)}
       </div>
-    </div>
-  )
-}
+    </>
+  );
+};
+
+export default Login;

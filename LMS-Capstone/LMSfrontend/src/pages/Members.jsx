@@ -1,47 +1,54 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import api from '../api/client'
+import React, { useEffect, useState } from 'react';
+import Navbar from '../components/Navbar';
+import Sidebar from '../components/Sidebar';
+import EntityTable from '../components/EntityTable';
+import EntityForm from '../components/EntityForm';
+import { getMembers, createMember, updateMember, deleteMember } from '../services/memberService';
 
-export default function Members() {
-  const [id, setId] = useState('')
-  const [data, setData] = useState(null)
-  const [err, setErr] = useState(null)
+const Members = () => {
+  const [data, setData] = useState([]);
+  const [editing, setEditing] = useState(null);
 
-  const fetchById = async () => {
-    setErr(null)
-    setData(null)
-    try {
-      const { data } = await api.get(`/members/${id}`)
-      setData(data)
-    } catch (e) {
-      setErr(e.response?.data ? JSON.stringify(e.response.data) : String(e))
+  const fetchData = async () => setData(await getMembers());
+  useEffect(() => { fetchData(); }, []);
+
+  const handleSubmit = async (formData) => {
+    if (editing) {
+      await updateMember(editing.id, formData);
+      setEditing(null);
+    } else {
+      await createMember(formData);
     }
-  }
+    fetchData();
+  };
+
+  const handleDelete = async (row) => {
+    await deleteMember(row.id);
+    fetchData();
+  };
+
+  const columns = ['id', 'name', 'email', 'phone'];
 
   return (
-    <div className="container">
-      <div className="card">
-        <h2>Find Member by ID</h2>
-        <div className="row">
-          <input className="input" placeholder="Member ID" value={id} onChange={e=>setId(e.target.value)} />
-          <button className="btn" onClick={fetchById}>Fetch</button>
-        </div>
-        {err && (<><div className="space" /><pre className="muted">{err}</pre></>)}
-        {data && (
-          <>
-            <div className="space" />
-            <table>
-              <tbody>
-                {Object.entries(data).map(([k,v])=> (
-                  <tr key={k}><th>{k}</th><td>{String(v)}</td></tr>
-                ))}
-              </tbody>
-            </table>
-            <div className="space" />
-            <Link className="btn" to={`/members/${data.id}`}>Open Detail</Link>
-          </>
-        )}
-      </div>
+    <div className="flex">
+      <Sidebar />
+      <main className="flex-1 p-6">
+        <Navbar />
+        <h1 className="text-2xl mb-4">Members</h1>
+        <EntityForm
+          fields={[
+            { name: 'name', label: 'Name' },
+            { name: 'email', label: 'Email' },
+            { name: 'phone', label: 'Phone' }
+          ]}
+          initialData={editing || {}}
+          onSubmit={handleSubmit}
+          onCancel={() => setEditing(null)}
+        />
+        <EntityTable columns={columns} data={data} onEdit={setEditing} onDelete={handleDelete} />
+      </main>
     </div>
-  )
-}
+  );
+};
+
+export default Members;

@@ -1,42 +1,35 @@
-import React, { useState } from 'react'
-import { useAuth } from '../context/AuthContext'
+import React, { useState } from 'react';
+import { register } from '../services/authService';
+import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
-export default function Register() {
-  const { register } = useAuth()
-  const [form, setForm] = useState({ name:'Admin', email:'admin@example.com', password:'password' })
-  const [msg, setMsg] = useState(null)
+const Register = () => {
+  const [form, setForm] = useState({ name: '', email: '', password: '' });
+  const navigate = useNavigate();
 
-  const onSubmit = async (e) => {
-    e.preventDefault()
-    try {
-      const res = await register(form)
-      setMsg(JSON.stringify(res, null, 2))
-    } catch (err) {
-      setMsg(err.response?.data ? JSON.stringify(err.response.data) : String(err))
-    }
-  }
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    const res = await register(form);
+    console.log(res);
+    navigate('/login');
+  };
 
   return (
-    <div className="container">
-      <div className="card" style={{maxWidth:560, margin:'0 auto'}}>
-        <h2>Register</h2>
-        <form onSubmit={onSubmit}>
-          <div className="row">
-            <input className="input" placeholder="Name" value={form.name} onChange={e=>setForm({...form, name:e.target.value})} />
-          </div>
-          <div className="space" />
-          <div className="row">
-            <input className="input" placeholder="Email" value={form.email} onChange={e=>setForm({...form, email:e.target.value})} />
-          </div>
-          <div className="space" />
-          <div className="row">
-            <input type="password" className="input" placeholder="Password" value={form.password} onChange={e=>setForm({...form, password:e.target.value})} />
-          </div>
-          <div className="space" />
-          <button className="btn" type="submit">Create account</button>
+    <>
+      <Navbar />
+      <div className="p-8 max-w-md mx-auto">
+        <h2 className="text-2xl mb-4">Register</h2>
+        <form onSubmit={handleRegister} className="space-y-3">
+          <input type="text" name="name" placeholder="Name" value={form.name} onChange={handleChange} required />
+          <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} required />
+          <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} required />
+          <button type="submit">Register!</button>
         </form>
-        {msg && (<><div className="space" /><pre className="muted" style={{whiteSpace:'pre-wrap'}}>{msg}</pre></>)}
       </div>
-    </div>
-  )
-}
+    </>
+  );
+};
+
+export default Register;

@@ -1,42 +1,61 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import api from '../api/client'
+import React, { useEffect, useState } from 'react';
+import Navbar from '../components/Navbar';
+import Sidebar from '../components/Sidebar';
+import EntityTable from '../components/EntityTable';
+import EntityForm from '../components/EntityForm';
+import { getCatalogues, createCatalogue, updateCatalogue, deleteCatalogue } from '../services/catalogueService';
 
-export default function Catalogues() {
-  const [items, setItems] = useState([])
-  const [q, setQ] = useState('')
+const Catalogues = () => {
+  const [data, setData] = useState([]);
+  const [editing, setEditing] = useState(null);
 
-  const load = async () => {
-    try {
-      const { data } = await api.get('/catalogues')
-      setItems(Array.isArray(data) ? data : (data?.content || []))
-    } catch (e) {
-      setItems([])
+  const fetchData = async () => setData(await getCatalogues());
+  useEffect(() => { fetchData(); }, []);
+
+  const handleSubmit = async (formData) => {
+    if (editing) {
+      await updateCatalogue(editing.id, formData);
+      setEditing(null);
+    } else {
+      await createCatalogue(formData);
     }
-  }
+    fetchData();
+  };
 
-  useEffect(() => { load() }, [])
+  const handleDelete = async (row) => {
+    await deleteCatalogue(row.id);
+    fetchData();
+  };
 
-  const filtered = items.filter(x => JSON.stringify(x).toLowerCase().includes(q.toLowerCase()))
+  const columns = ['id', 'title', 'author', 'description', 'available', 'rating'];
 
   return (
-    <div className="container">
-      <div className="row">
-        <input className="input" placeholder="Search…" value={q} onChange={e=>setQ(e.target.value)} />
-        <button className="btn" onClick={load}>Reload</button>
-      </div>
-      <div className="space" />
-      <div className="grid">
-        {filtered.map((b, idx) => (
-          <div className="card" key={b.id || idx}>
-            <div className="tag">#{b.id ?? '—'}</div>
-            <h3 style={{margin:'6px 0'}}>{b.title || b.name || 'Untitled'}</h3>
-            <p className="muted">{b.author || b.description || ''}</p>
-            <div className="space" />
-            <Link className="btn" to={`/catalogues/${b.id}`}>Open</Link>
-          </div>
-        ))}
-      </div>
+    <div className="flex">
+      <Sidebar />
+      <main className="flex-1 p-6">
+        <Navbar />
+        <h1 className="text-2xl mb-4">Catalogues</h1>
+        <EntityForm
+          fields={[
+            { name: 'title', label: 'Title' },
+            { name: 'author', label: 'Author' },
+            { name: 'description', label: 'Description' },
+            { 
+              name: 'available', 
+              label: 'Available', 
+              type: 'select', 
+              options: [true , false] 
+            },
+            { name: 'rating', label: 'Rating', type: 'number' }
+          ]}
+          initialData={editing || {}}
+          onSubmit={handleSubmit}
+          onCancel={() => setEditing(null)}
+        />
+        <EntityTable columns={columns} data={data} onEdit={setEditing} onDelete={handleDelete} />
+      </main>
     </div>
-  )
-}
+  );
+};
+
+export default Catalogues;

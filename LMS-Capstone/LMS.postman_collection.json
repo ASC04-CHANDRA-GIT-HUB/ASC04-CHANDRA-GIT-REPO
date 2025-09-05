@@ -1,0 +1,1084 @@
+{
+	"info": {
+		"_postman_id": "20bd2799-f47c-4b36-813e-2109824f6b60",
+		"name": "LMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47519142",
+		"_collection_link": "https://chandrasagarcm-4883918.postman.co/workspace/Chandra-Sagar-C-M's-Workspace~10f34a5b-c341-4710-80ea-31cc4d5ceb24/collection/47519142-20bd2799-f47c-4b36-813e-2109824f6b60?action=share&source=collection_link&creator=47519142"
+	},
+	"item": [
+		{
+			"name": "adminService",
+			"item": [
+				{
+					"name": "ADMIN registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//     \"name\": \"Chandra Sagar C M\",\r\n//     \"email\": \"chandra@admin.com\",\r\n//     \"phone\": \"9900172514\",\r\n//     \"password\": \"@Chandrapass123\"\r\n// }\r\n{\r\n    \"name\": \"Rahul V B\",\r\n    \"email\": \"rahul@admin.com\",\r\n    \"password\": \"@Rahulpass123\",\r\n    \"phone\": \"8217426761\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADMIN login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//     \"email\": \"chandra@admin.com\",\r\n//     \"password\": \"@Chandrapass123\"\r\n// }\r\n\r\n{\r\n    \"email\": \"rahul@admin.com\",\r\n    \"password\": \"@Rahulpass123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "catalogueService",
+			"item": [
+				{
+					"name": "BOOK add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODg5OTAsImV4cCI6MTc1Njc5MjU5MH0.PTxTDocuVUgh0nxF6SKT3TFfvKcXUZmFGCRNHMRjBW4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//   \"title\": \"Clean Code (2nd Edition)\",\r\n//   \"author\": \"Robert C. Martin\",\r\n//   \"description\": \"Updated handbook of agile craftsmanship\",\r\n//   \"available\": true\r\n// }\r\n\r\n{\r\n  \"title\": \"Clean Code (3nd Edition)\",\r\n  \"author\": \"Robert C. Martin\",\r\n  \"description\": \"Reupdated handbook of agile craftsmanship\",\r\n  \"available\": true\r\n}\r\n\r\n\r\n// {\r\n//   \"title\": \"Clean Code (1st Edition)\",\r\n//   \"author\": \"Robert C. Martin\",\r\n//   \"description\": \"Handbook of agile craftsmanship\",\r\n//   \"available\": true\r\n// }\r\n\r\n// {\r\n//   \"title\": \"Clean Code (4th Edition)\",\r\n//   \"author\": \"Robert C. Martin\",\r\n//   \"description\": \"Re-reupdated handbook of agile craftsmanship\",\r\n//   \"available\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/catalogues",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"catalogues"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BOOK view all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3MjA2MDEsImV4cCI6MTc1NjcyNDIwMX0.VJbnt7smfKYebzbiFxiM5HjqoegyHGxMzBo0Au_dGXY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Clean Code (2nd Edition)\",\r\n  \"author\": \"Robert C. Martin\",\r\n  \"description\": \"Updated handbook of agile craftsmanship\",\r\n  \"available\": true\r\n}\r\n\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8083/catalogues",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"catalogues"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BOOK view",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3MjI1MTgsImV4cCI6MTc1NjcyNjExOH0.ErvvRiQB1TA2zwV8xgxoykt6WB9t_T-MyF_rGnhW93g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8083/catalogues/C0002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"catalogues",
+								"C0002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BOOK update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3MjI1MTgsImV4cCI6MTc1NjcyNjExOH0.ErvvRiQB1TA2zwV8xgxoykt6WB9t_T-MyF_rGnhW93g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//   \"title\": \"Clean Code (2nd Edition)\",\r\n//   \"author\": \"Robert C. Martin\",\r\n//   \"description\": \"Updated handbook of agile craftsmanship\",\r\n//   \"available\": false\r\n// }\r\n\r\n// {\r\n//   \"title\": \"Clean Code (3nd Edition)\",\r\n//   \"author\": \"Robert C. Martin\",\r\n//   \"description\": \"Reupdated handbook of agile craftsmanship\",\r\n//   \"available\": false\r\n// }\r\n\r\n\r\n{\r\n  \"title\": \"Clean Code (1st Edition)\",\r\n  \"author\": \"Robert C. Martin and Ricky J. Thomson\",\r\n  \"description\": \"Handbook of agile craftsmanship\",\r\n  \"available\": false\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/catalogues/C0002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"catalogues",
+								"C0002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BOOK delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3MjI1MTgsImV4cCI6MTc1NjcyNjExOH0.ErvvRiQB1TA2zwV8xgxoykt6WB9t_T-MyF_rGnhW93g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8083/catalogues/C0004",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"catalogues",
+								"C0004"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "memberService",
+			"item": [
+				{
+					"name": "MEMBER add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Niveditha\",\r\n    \"email\": \"niveditha@nayana.com\",\r\n    \"phone\": \"7259182991\"\r\n}\r\n// {\r\n//     \"name\": \"Harsh\",\r\n//     \"email\": \"harsh@kulkarni.com\",\r\n//     \"phone\": \"7019659800\"\r\n// }\r\n// {\r\n//     \"name\": \"Sudeep\",\r\n//     \"email\": \"sudeep@gowda.com\",\r\n//     \"phone\": \"7483098884\"\r\n// }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/members",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MEMBER view all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8084/members",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MEMBER view",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8084/members/M0001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"members",
+								"M0001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MEMBER update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Niveditha\",\r\n    \"email\": \"niveditha@patil.com\",\r\n    \"phone\": \"7259182991\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/members/M0001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"members",
+								"M0001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MEMBER delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Niveditha\",\r\n    \"email\": \"niveditha@patil.com\",\r\n    \"phone\": \"7259182991\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8084/members/M0001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"members",
+								"M0001"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "circulationService",
+			"item": [
+				{
+					"name": "TRACK add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//   \"member_id\": \"M0002\",\r\n//   \"catalogue_id\": \"C0002\"\r\n// }\r\n// {\r\n//   \"member_id\": \"M0003\",\r\n//   \"catalogue_id\": \"C0004\"\r\n// }\r\n// {\r\n//   \"member_id\": \"M0004\",\r\n//   \"catalogue_id\": \"C0002\"\r\n// }\r\n{\r\n    \"member_id\": \"M9999\",\r\n    \"catalogue_id\": \"C0011\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/circulations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"circulations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TRACK view all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8085/circulations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"circulations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TRACK view",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8085/circulations/T0001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"circulations",
+								"T0001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TRACK update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"status\": \"RETURNED\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/circulations/T0006/return",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"circulations",
+								"T0006",
+								"return"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TRACK delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/circulations/T0001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"circulations",
+								"T0001"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "acquisitionService",
+			"item": [
+				{
+					"name": "ACQUISITION add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Introduction to Algorithms\",\r\n  \"author\": \"Thomas H. Cormen\",\r\n  \"supplier\": \"Pearson Publishing\",\r\n  \"status\": \"REQUESTED\",\r\n  \"description\": \"Advanced algorithms for strengthening your DSA\"\r\n}\r\n// {\r\n//   \"title\": \"Java GOD\",\r\n//   \"author\": \"Kulkarni P. Harsh\",\r\n//   \"supplier\": \"Philomath Publishing\",\r\n//   \"status\": \"REQUESTED\",\r\n//   \"description\": \"Advanced java course\"\r\n// }\r\n// {\r\n//     \"title\": \"Light of my life - Niv\",\r\n//     \"author\": \"Pratik Patil\",\r\n//     \"supplier\": \"Nayana Publishing\",\r\n//     \"status\": \"REQUESTED\",\r\n//     \"description\": \"Love story of the opposites\"\r\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8086/acquisitions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"acquisitions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACQUISITION view all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8086/acquisitions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"acquisitions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACQUISITION view",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Introduction to Algorithms\",\r\n  \"author\": \"Thomas H. Cormen\",\r\n  \"ordered_date\": \"2025-09-01\",\r\n  \"supplier\": \"Pearson Publishing\",\r\n  \"status\": \"PENDING\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8086/acquisitions/A0001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"acquisitions",
+								"A0001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACQUISITION update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Light of my life - Niv\",\r\n    \"author\": \"Pratik Patil\",\r\n    \"supplier\": \"Nayana Publishing\",\r\n    \"status\": \"RECEIVED\",\r\n    \"description\": \"Love story of the opposites\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8086/acquisitions/A0001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"acquisitions",
+								"A0001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ACQUISITION delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Introduction to Algorithms\",\r\n  \"author\": \"Thomas H. Cormen\",\r\n  \"ordered_date\": \"2025-09-01\",\r\n  \"supplier\": \"Pearson Publishing\",\r\n  \"status\": \"RECEIVED\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8086/acquisitions/A0001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"acquisitions",
+								"A0001"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reviewService",
+			"item": [
+				{
+					"name": "REVIEW add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY4NzQzNTQsImV4cCI6MTc1Njg3Nzk1NH0.4gkPQuD-_81xrqnogBjnpl0r_blRHQtbWjjByb5xCLs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//     \"member_id\": \"M0004\",\r\n//     \"catalogue_id\": \"C0002\",\r\n//     \"comment\": \"Nice book\",\r\n//     \"rating\": 5\r\n// }\r\n// {\r\n//   \"member_id\": \"M0002\",\r\n//   \"catalogue_id\": \"C0002\",\r\n//   \"comment\": \"Nice book\",\r\n//   \"rating\": 5\r\n// }\r\n// {\r\n//   \"member_id\": \"M0003\",\r\n//   \"catalogue_id\": \"C0004\",\r\n//   \"comment\": \"Would recommend friends and family.\",\r\n//   \"rating\": 4.5\r\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/reviews",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REVIEW view all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8087/reviews",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REVIEW view",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"member_id\": \"M0002\",\r\n  \"catalogue_id\": \"C0001\",\r\n  \"rating\": 4.9,\r\n  \"comment\": \"Excellent book, highly recommend!\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8087/reviews/R0001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"reviews",
+								"R0001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REVIEW viewByCid",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"member_id\": \"M0002\",\r\n  \"catalogue_id\": \"C0001\",\r\n  \"rating\": 5,\r\n  \"comment\": \"Excellent book, highly recommend!\"\r\n}\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8087/reviews/catalogue/C0002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"reviews",
+								"catalogue",
+								"C0002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REVIEW viewByMid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/reviews/member/M0004",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"reviews",
+								"member",
+								"M0004"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REVIEW update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"rating\": 4,\r\n  \"comment\": \"Average book!\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/reviews/R0003",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"reviews",
+								"R0003"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REVIEW delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyYWh1bEBhZG1pbi5jb20iLCJpYXQiOjE3NTY3ODU0ODcsImV4cCI6MTc1Njc4OTA4N30.xIExGJq3-yPm5KtsEHFzG5u2IvUpjtCfN_UUt-48NLI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8087/reviews/R0001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"reviews",
+								"R0001"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

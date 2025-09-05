@@ -1,43 +1,57 @@
-import React, { useEffect, useState } from 'react'
-import api from '../api/client'
+import React, { useEffect, useState } from 'react';
+import Navbar from '../components/Navbar';
+import Sidebar from '../components/Sidebar';
+import EntityTable from '../components/EntityTable';
+import EntityForm from '../components/EntityForm';
+import { getAcquisitions, createAcquisition, updateAcquisition, deleteAcquisition } from '../services/acquisitionService';
 
-export default function Acquisitions() {
-  const [items, setItems] = useState([])
-  const [msg, setMsg] = useState(null)
+const Acquisitions = () => {
+  const [data, setData] = useState([]);
+  const [editing, setEditing] = useState(null);
 
-  const load = async () => {
-    try {
-      const { data } = await api.get('/acquisitions')
-      setItems(Array.isArray(data) ? data : (data?.content || []))
-    } catch (e) {
-      setItems([])
+  const fetchData = async () => setData(await getAcquisitions());
+  useEffect(() => { fetchData(); }, []);
+
+  const handleSubmit = async (formData) => {
+    if (editing) {
+      await updateAcquisition(editing.id, formData);
+      setEditing(null);
+    } else {
+      await createAcquisition(formData);
     }
-  }
+    fetchData();
+  };
 
-  useEffect(() => { load() }, [])
+  const handleDelete = async (row) => {
+    await deleteAcquisition(row.id);
+    fetchData();
+  };
+
+  // Table columns (ignore 'deleted')
+  const columns = ['id', 'title', 'author', 'supplier', 'status', 'description'];
 
   return (
-    <div className="container">
-      <div className="card">
-        <h2>Acquisitions <span className="tag">secure</span></h2>
-        <p className="muted">Requires login (JWT attached automatically).</p>
-        <div className="space" />
-        <button className="btn" onClick={load}>Reload</button>
-        <div className="space" />
-        <table>
-          <thead><tr><th>ID</th><th>Title</th><th>Status</th></tr></thead>
-          <tbody>
-            {items.map((x,i)=>(
-              <tr key={x.id || i}>
-                <td>{x.id ?? '—'}</td>
-                <td>{x.title || x.name || '—'}</td>
-                <td>{x.status || '—'}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        {msg && (<><div className="space" /><pre className="muted" style={{whiteSpace:'pre-wrap'}}>{msg}</pre></>)}
-      </div>
+    <div className="flex">
+      <Sidebar />
+      <main className="flex-1 p-6">
+        <Navbar />
+        <h1 className="text-2xl mb-4">Acquisitions</h1>
+        <EntityForm
+          fields={[
+            { name: 'title', label: 'Title' },
+            { name: 'author', label: 'Author' },
+            { name: 'supplier', label: 'Supplier' },
+            { name: 'status', label: 'Status', type: 'select', options: ['REQUESTED', 'RECEIVED'] },
+            { name: 'description', label: 'Description' }
+          ]}
+          initialData={editing || {}}
+          onSubmit={handleSubmit}
+          onCancel={() => setEditing(null)}
+        />
+        <EntityTable columns={columns} data={data} onEdit={setEditing} onDelete={handleDelete} />
+      </main>
     </div>
-  )
-}
+  );
+};
+
+export default Acquisitions;

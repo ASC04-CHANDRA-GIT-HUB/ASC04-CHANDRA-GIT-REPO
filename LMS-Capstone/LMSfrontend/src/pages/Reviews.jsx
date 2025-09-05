@@ -1,71 +1,75 @@
-import React, { useEffect, useState } from 'react'
-import api from '../api/client'
+import React, { useEffect, useState } from 'react';
+import Navbar from '../components/Navbar';
+import Sidebar from '../components/Sidebar';
+import EntityTable from '../components/EntityTable';
+import EntityForm from '../components/EntityForm';
+import { getReviews, createReview, updateReview, deleteReview } from '../services/reviewService';
+import { getMembers } from '../services/memberService';
+import { getCatalogues } from '../services/catalogueService';
 
-export default function Reviews() {
-  const [list, setList] = useState([])
-  const [catalogueId, setCatalogueId] = useState('')
-  const [filtered, setFiltered] = useState([])
+const Reviews = () => {
+  const [data, setData] = useState([]);
+  const [editing, setEditing] = useState(null);
+  const [members, setMembers] = useState([]);
+  const [catalogues, setCatalogues] = useState([]);
 
-  const loadAll = async () => {
-    try {
-      const { data } = await api.get('/reviews')
-      setList(Array.isArray(data) ? data : (data?.content || []))
-    } catch (e) {
-      setList([])
+  useEffect(() => {
+    const fetchData = async () => {
+      setData(await getReviews());
+      setMembers(await getMembers());
+      setCatalogues(await getCatalogues());
+    };
+    fetchData();
+  }, []);
+
+  const handleSubmit = async (formData) => {
+    if (editing) {
+      await updateReview(editing.id, formData);
+      setEditing(null);
+    } else {
+      await createReview(formData);
     }
-  }
+    setData(await getReviews());
+  };
 
-  const loadByCatalogue = async () => {
-    try {
-      const { data } = await api.get(`/reviews/catalogue/${catalogueId}`)
-      setFiltered(Array.isArray(data) ? data : [])
-    } catch (e) {
-      setFiltered([])
-    }
-  }
+  const handleDelete = async (row) => {
+    await deleteReview(row.id);
+    setData(await getReviews());
+  };
 
-  useEffect(() => { loadAll() }, [])
+  const columns = ['id', 'member_id', 'catalogue_id', 'rating', 'comments'];
 
   return (
-    <div className="container">
-      <div className="card">
-        <h2>Reviews</h2>
-        <div className="row">
-          <input className="input" placeholder="Catalogue ID" value={catalogueId} onChange={e=>setCatalogueId(e.target.value)} />
-          <button className="btn" onClick={loadByCatalogue}>Load for Book</button>
-        </div>
-        <div className="space" />
-        <h3>All</h3>
-        <table>
-          <thead><tr><th>ID</th><th>Member</th><th>Catalogue</th><th>Rating</th><th>Comment</th></tr></thead>
-          <tbody>
-            {list.map((r, i) => (
-              <tr key={r.id || i}>
-                <td>{r.id ?? '—'}</td>
-                <td>{r.memberId ?? r.member_id ?? '—'}</td>
-                <td>{r.catalogueId ?? r.catalogue_id ?? '—'}</td>
-                <td>{r.rating ?? '—'}</td>
-                <td>{r.comment ?? r.review ?? ''}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div className="space" />
-        <h3>By Catalogue</h3>
-        <table>
-          <thead><tr><th>ID</th><th>Member</th><th>Rating</th><th>Comment</th></tr></thead>
-          <tbody>
-            {filtered.map((r, i) => (
-              <tr key={r.id || i}>
-                <td>{r.id ?? '—'}</td>
-                <td>{r.memberId ?? r.member_id ?? '—'}</td>
-                <td>{r.rating ?? '—'}</td>
-                <td>{r.comment ?? r.review ?? ''}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+    <div className="flex">
+      <Sidebar />
+      <main className="flex-1 p-6">
+        <Navbar />
+        <h1 className="text-2xl mb-4">Reviews</h1>
+        <EntityForm
+          fields={[
+            { 
+              name: 'member_id', 
+              label: 'Member', 
+              type: 'select', 
+              options: members.map(m => m.id) 
+            },
+            { 
+              name: 'catalogue_id', 
+              label: 'Book', 
+              type: 'select', 
+              options: catalogues.map(c => c.id) 
+            },
+            { name: 'rating', label: 'Rating', type: 'number' },
+            { name: 'comments', label: 'Comments' }
+          ]}
+          initialData={editing || {}}
+          onSubmit={handleSubmit}
+          onCancel={() => setEditing(null)}
+        />
+        <EntityTable columns={columns} data={data} onEdit={setEditing} onDelete={handleDelete} />
+      </main>
     </div>
-  )
-}
+  );
+};
+
+export default Reviews;

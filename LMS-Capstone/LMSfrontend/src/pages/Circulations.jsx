@@ -1,46 +1,56 @@
-import React, { useState } from 'react'
-import api from '../api/client'
+import React, { useEffect, useState } from 'react';
+import Navbar from '../components/Navbar';
+import Sidebar from '../components/Sidebar';
+import EntityTable from '../components/EntityTable';
+import EntityForm from '../components/EntityForm';
+import { getCirculations, createCirculation, updateCirculation, deleteCirculation } from '../services/circulationService';
 
-export default function Circulations() {
-  const [catalogueId, setCatalogueId] = useState('')
-  const [memberId, setMemberId] = useState('')
-  const [exists, setExists] = useState(null)
-  const [returnMsg, setReturnMsg] = useState(null)
+const Circulations = () => {
+  const [data, setData] = useState([]);
+  const [editing, setEditing] = useState(null);
 
-  const checkExists = async () => {
-    setExists(null)
-    try {
-      const { data } = await api.get(`/circulations/exists`, { params: { catalogueId, memberId } })
-      setExists(data)
-    } catch (e) {
-      setExists(e.response?.data || String(e))
+  const fetchData = async () => setData(await getCirculations());
+  useEffect(() => { fetchData(); }, []);
+
+  const handleSubmit = async (formData) => {
+    if (editing) {
+      await updateCirculation(editing.id, formData);
+      setEditing(null);
+    } else {
+      await createCirculation(formData);
     }
-  }
+    fetchData();
+  };
 
-  const returnBook = async () => {
-    setReturnMsg(null)
-    try {
-      const { data } = await api.put(`/circulations/${catalogueId}/return`, { memberId })
-      setReturnMsg(JSON.stringify(data, null, 2))
-    } catch (e) {
-      setReturnMsg(e.response?.data ? JSON.stringify(e.response.data) : String(e))
-    }
-  }
+  const handleDelete = async (row) => {
+    await deleteCirculation(row.id);
+    fetchData();
+  };
+
+  const columns = ['id', 'memberName', 'bookTitle', 'issueDate', 'returnDate', 'status'];
 
   return (
-    <div className="container">
-      <div className="card">
-        <h2>Circulation</h2>
-        <div className="row">
-          <input className="input" placeholder="Catalogue ID" value={catalogueId} onChange={e=>setCatalogueId(e.target.value)} />
-          <input className="input" placeholder="Member ID" value={memberId} onChange={e=>setMemberId(e.target.value)} />
-          <button className="btn" onClick={checkExists}>Check Issue</button>
-          <button className="btn" onClick={returnBook}>Return</button>
-        </div>
-        <div className="space" />
-        {exists !== null && <pre className="muted" style={{whiteSpace:'pre-wrap'}}>{JSON.stringify(exists,null,2)}</pre>}
-        {returnMsg && <><div className="space" /><pre className="muted" style={{whiteSpace:'pre-wrap'}}>{returnMsg}</pre></>}
-      </div>
+    <div className="flex">
+      <Sidebar />
+      <main className="flex-1 p-6">
+        <Navbar />
+        <h1 className="text-2xl mb-4">Circulations</h1>
+        <EntityForm
+          fields={[
+            { name: 'memberName', label: 'Member Name' },
+            { name: 'bookTitle', label: 'Book Title' },
+            { name: 'issueDate', label: 'Issue Date', type: 'date' },
+            { name: 'returnDate', label: 'Return Date', type: 'date' },
+            { name: 'status', label: 'Status', type: 'select', options: ['Issued', 'Returned'] }
+          ]}
+          initialData={editing || {}}
+          onSubmit={handleSubmit}
+          onCancel={() => setEditing(null)}
+        />
+        <EntityTable columns={columns} data={data} onEdit={setEditing} onDelete={handleDelete} />
+      </main>
     </div>
-  )
-}
+  );
+};
+
+export default Circulations;

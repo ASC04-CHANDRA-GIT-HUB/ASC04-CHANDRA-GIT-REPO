@@ -1,21 +1,55 @@
-:root { --bg:#0f172a; --fg:#e2e8f0; --muted:#94a3b8; --card:#111827; --accent:#22d3ee; }
-* { box-sizing:border-box; }
-body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial; background:var(--bg); color:var(--fg); }
-a { color: inherit; text-decoration: none; }
-.container { max-width:1200px; margin:0 auto; padding:24px; }
-.nav { display:flex; gap:12px; align-items:center; padding:12px 24px; background:#0b1220; border-bottom:1px solid #1f2937; position:sticky; top:0; z-index:10; }
-.nav a { padding:8px 12px; border-radius:10px; }
-.nav a.active { background:#111827; outline:1px solid #1f2937; }
-.card { background:var(--card); border:1px solid #1f2937; border-radius:16px; padding:16px; box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
-.grid { display:grid; gap:16px; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); }
-.btn { display:inline-flex; align-items:center; gap:8px; padding:10px 14px; background:#0b1220; border:1px solid #1f2937; border-radius:12px; color:var(--fg); cursor:pointer; }
-.btn:hover { outline:1px solid #334155; }
-.input, .select { width:100%; padding:10px 12px; background:#0b1220; color:var(--fg); border:1px solid #1f2937; border-radius:10px; }
-.muted { color:var(--muted); }
-.row { display:flex; gap:12px; }
-.space { height:16px; }
-.tag { display:inline-block; padding:4px 8px; background:#0b1220; border:1px solid #1f2937; border-radius:999px; font-size:12px; }
-.accent { color: var(--accent); }
-table { width:100%; border-collapse: collapse; }
-th, td { border-bottom: 1px solid #1f2937; padding: 10px; text-align: left; }
-th { color:#cbd5e1; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles */
+body {
+  @apply bg-gray-100 text-gray-800 font-sans;
+}
+
+a {
+  @apply text-blue-600 hover:text-blue-800 transition-colors;
+}
+
+button {
+  @apply px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition-colors;
+}
+
+input, select, textarea {
+  @apply border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+}
+
+/* Table styling */
+table {
+  @apply w-full border-collapse;
+}
+
+th {
+  @apply bg-gray-200 font-semibold text-left px-4 py-2 border-b;
+}
+
+td {
+  @apply px-4 py-2 border-b;
+}
+
+/* Card component styling */
+.card {
+  @apply bg-white shadow-md rounded-lg p-4;
+}
+
+/* Sidebar styling */
+.sidebar {
+  @apply bg-white w-64 min-h-screen shadow-md p-4;
+}
+
+/* Navbar styling */
+.navbar {
+  @apply bg-white shadow-md px-6 py-4 flex justify-between items-center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    @apply w-16 p-2;
+  }
+}
