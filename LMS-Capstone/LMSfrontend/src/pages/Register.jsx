@@ -1,35 +1,37 @@
-import React, { useState } from 'react';
-import { register } from '../services/authService';
-import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar';
+import React, { useState } from "react";
+import { register } from "../services/api";
 
-const Register = () => {
-  const [form, setForm] = useState({ name: '', email: '', password: '' });
-  const navigate = useNavigate();
+export default function Register() {
+  const [form, setForm] = useState({ name: "", email: "", password: "" });
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
-
-  const handleRegister = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
     const res = await register(form);
-    console.log(res);
-    navigate('/login');
-  };
+    alert(res.message || "Registration success!");
+  }
 
   return (
-    <>
-      <Navbar />
-      <div className="p-8 max-w-md mx-auto">
-        <h2 className="text-2xl mb-4">Register</h2>
-        <form onSubmit={handleRegister} className="space-y-3">
-          <input type="text" name="name" placeholder="Name" value={form.name} onChange={handleChange} required />
-          <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} required />
-          <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} required />
-          <button type="submit">Register!</button>
-        </form>
-      </div>
-    </>
+    <div className="page">
+      <h2>Register</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="Name"
+          value={form.name}
+          onChange={(e) => setForm({ ...form, name: e.target.value })}
+        />
+        <input
+          placeholder="Email"
+          value={form.email}
+          onChange={(e) => setForm({ ...form, email: e.target.value })}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={form.password}
+          onChange={(e) => setForm({ ...form, password: e.target.value })}
+        />
+        <button type="submit">Register</button>
+      </form>
+    </div>
   );
-};
-
-export default Register;
+}

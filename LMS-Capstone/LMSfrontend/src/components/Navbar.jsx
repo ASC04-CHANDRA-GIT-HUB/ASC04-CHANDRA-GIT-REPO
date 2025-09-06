@@ -1,19 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import "./Navbar.css";
 
-const Navbar = () => (
-  <nav className="navbar shadow-md bg-white px-6 py-4 flex justify-between items-center">
-    <div className="text-xl font-bold">LMS</div>
-    <div className="flex space-x-4">
-      <Link to="/dashboard">Dashboard</Link>
-      <Link to="/catalogues">Catalogues</Link>
-      <Link to="/members">Members</Link>
-      <Link to="/circulations">Circulations</Link>
-      <Link to="/acquisitions">Acquisitions</Link>
-      <Link to="/reviews">Reviews</Link>
-      <Link to="/login" className="text-red-600">Login</Link>
-    </div>
-  </nav>
-);
-
-export default Navbar;
+export default function Navbar() {
+  return (
+    <nav className="navbar">
+      <h2 className="logo">LMS Dashboard</h2>
+      <div className="links">
+        <Link to="/">Home</Link>
+        <Link to="/acquisitions">Acquisitions</Link>
+        <Link to="/catalogue">Catalogue</Link>
+        <Link to="/circulation">Circulation</Link>
+        <Link to="/members">Members</Link>
+        <Link to="/reviews">Reviews</Link>
+        <Link to="/login">Login</Link>
+      </div>
+    </nav>
+  );
+}

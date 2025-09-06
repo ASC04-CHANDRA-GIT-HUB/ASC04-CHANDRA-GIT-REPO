@@ -18,7 +18,7 @@ public class ReviewController {
     @Autowired
     private ReviewService review_service;
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Review> add_review(@RequestBody Review review) {
         return ResponseEntity.status(201).body(review_service.add_review(review));
     }

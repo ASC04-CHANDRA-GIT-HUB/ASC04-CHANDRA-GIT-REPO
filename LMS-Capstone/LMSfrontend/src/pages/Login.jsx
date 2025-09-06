@@ -1,33 +1,32 @@
-import React, { useState } from 'react';
-import { login } from '../services/authService';
-import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar';
+import React, { useState } from "react";
+import { login } from "../services/api";
 
-const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+export default function Login() {
+  const [form, setForm] = useState({ email: "", password: "" });
 
-  const handleLogin = async (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-    const res = await login(email, password);
-    console.log(res);
-    navigate('/dashboard');
-  };
+    const res = await login(form);
+    alert(res.message || "Login success!");
+  }
 
   return (
-    <>
-      <Navbar />
-      <div className="p-8 max-w-md mx-auto">
-        <h2 className="text-2xl mb-4">Login</h2>
-        <form onSubmit={handleLogin} className="space-y-3">
-          <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
-          <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
-          <button type="submit">Login!</button>
-        </form>
-      </div>
-    </>
+    <div className="page">
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="Email"
+          value={form.email}
+          onChange={(e) => setForm({ ...form, email: e.target.value })}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={form.password}
+          onChange={(e) => setForm({ ...form, password: e.target.value })}
+        />
+        <button type="submit">Login</button>
+      </form>
+    </div>
   );
-};
-
-export default Login;
+}

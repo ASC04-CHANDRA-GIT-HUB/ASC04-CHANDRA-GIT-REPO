@@ -37,7 +37,7 @@ public class AcquisitionController {
     }
 
     // Create new acquisition
-    @PostMapping
+    @PostMapping("/create")
     public Acquisition create(@RequestBody Acquisition acquisition) {
         if (acquisition.getId() == null || acquisition.getId().isEmpty()) {
             acquisition.setId(IdGenerator.next("A"));

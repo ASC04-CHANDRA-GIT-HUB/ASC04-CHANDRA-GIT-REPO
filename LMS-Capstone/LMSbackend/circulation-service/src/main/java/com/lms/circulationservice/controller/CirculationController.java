@@ -30,7 +30,7 @@ public class CirculationController {
         return repo.findByDeletedFalse();
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody Circulation c) {
         boolean memberValid = true;
         boolean catalogueValid = true;

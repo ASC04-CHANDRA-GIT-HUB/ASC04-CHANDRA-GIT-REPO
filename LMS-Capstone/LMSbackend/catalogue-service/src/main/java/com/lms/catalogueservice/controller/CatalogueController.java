@@ -19,7 +19,7 @@ import java.util.Optional;
 @RequestMapping("/catalogues")
 public class CatalogueController {
 
-    // DTO inside CatalogueController (can be at bottom of the class)
+    // DTO inside CatalogueController
     public static class RatingRequest {
         private Double rating;
 
@@ -43,7 +43,7 @@ public class CatalogueController {
         return ResponseEntity.ok(list);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<?> create(@RequestBody Catalogue c) {
         try {
             // Normalize title/author when checking duplicates

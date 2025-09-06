@@ -24,7 +24,7 @@ public class MemberController {
     @GetMapping
     public List<Member> all() { return repo.findByDeletedFalse(); }
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<?> create(@RequestBody Member m) {
         m.setId(IdGenerator.next("M"));
         repo.save(m);

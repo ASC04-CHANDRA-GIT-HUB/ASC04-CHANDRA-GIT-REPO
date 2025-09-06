@@ -1,75 +1,64 @@
-import React, { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
-import Sidebar from '../components/Sidebar';
-import EntityTable from '../components/EntityTable';
-import EntityForm from '../components/EntityForm';
-import { getReviews, createReview, updateReview, deleteReview } from '../services/reviewService';
-import { getMembers } from '../services/memberService';
-import { getCatalogues } from '../services/catalogueService';
+import React, { useEffect, useState } from "react";
+import {
+  getReviews,
+  addReview,
+  updateReview,
+  deleteReview,
+} from "../services/api";
 
-const Reviews = () => {
-  const [data, setData] = useState([]);
-  const [editing, setEditing] = useState(null);
-  const [members, setMembers] = useState([]);
-  const [catalogues, setCatalogues] = useState([]);
+export default function Reviews() {
+  const [reviews, setReviews] = useState([]);
+  const [form, setForm] = useState({ memberId: "", catalogueId: "", text: "" });
 
   useEffect(() => {
-    const fetchData = async () => {
-      setData(await getReviews());
-      setMembers(await getMembers());
-      setCatalogues(await getCatalogues());
-    };
-    fetchData();
+    loadReviews();
   }, []);
 
-  const handleSubmit = async (formData) => {
-    if (editing) {
-      await updateReview(editing.id, formData);
-      setEditing(null);
-    } else {
-      await createReview(formData);
-    }
-    setData(await getReviews());
-  };
+  async function loadReviews() {
+    setReviews(await getReviews());
+  }
 
-  const handleDelete = async (row) => {
-    await deleteReview(row.id);
-    setData(await getReviews());
-  };
+  async function handleSubmit(e) {
+    e.preventDefault();
+    await addReview(form);
+    setForm({ memberId: "", catalogueId: "", text: "" });
+    loadReviews();
+  }
 
-  const columns = ['id', 'member_id', 'catalogue_id', 'rating', 'comments'];
+  async function handleDelete(id) {
+    await deleteReview(id);
+    loadReviews();
+  }
 
   return (
-    <div className="flex">
-      <Sidebar />
-      <main className="flex-1 p-6">
-        <Navbar />
-        <h1 className="text-2xl mb-4">Reviews</h1>
-        <EntityForm
-          fields={[
-            { 
-              name: 'member_id', 
-              label: 'Member', 
-              type: 'select', 
-              options: members.map(m => m.id) 
-            },
-            { 
-              name: 'catalogue_id', 
-              label: 'Book', 
-              type: 'select', 
-              options: catalogues.map(c => c.id) 
-            },
-            { name: 'rating', label: 'Rating', type: 'number' },
-            { name: 'comments', label: 'Comments' }
-          ]}
-          initialData={editing || {}}
-          onSubmit={handleSubmit}
-          onCancel={() => setEditing(null)}
+    <div className="page">
+      <h2>Reviews</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="Member ID"
+          value={form.memberId}
+          onChange={(e) => setForm({ ...form, memberId: e.target.value })}
         />
-        <EntityTable columns={columns} data={data} onEdit={setEditing} onDelete={handleDelete} />
-      </main>
+        <input
+          placeholder="Catalogue ID"
+          value={form.catalogueId}
+          onChange={(e) => setForm({ ...form, catalogueId: e.target.value })}
+        />
+        <input
+          placeholder="Review text"
+          value={form.text}
+          onChange={(e) => setForm({ ...form, text: e.target.value })}
+        />
+        <button type="submit">Add</button>
+      </form>
+      <ul>
+        {reviews.map((r) => (
+          <li key={r.id}>
+            {r.text} (Member {r.memberId} on Catalogue {r.catalogueId})
+            <button onClick={() => handleDelete(r.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
-};
-
-export default Reviews;
+}

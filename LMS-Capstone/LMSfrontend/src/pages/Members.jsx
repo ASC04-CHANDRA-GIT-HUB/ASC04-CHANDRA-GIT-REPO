@@ -1,54 +1,59 @@
-import React, { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
-import Sidebar from '../components/Sidebar';
-import EntityTable from '../components/EntityTable';
-import EntityForm from '../components/EntityForm';
-import { getMembers, createMember, updateMember, deleteMember } from '../services/memberService';
+import React, { useEffect, useState } from "react";
+import {
+  getMembers,
+  addMember,
+  updateMember,
+  deleteMember,
+} from "../services/api";
 
-const Members = () => {
-  const [data, setData] = useState([]);
-  const [editing, setEditing] = useState(null);
+export default function Members() {
+  const [members, setMembers] = useState([]);
+  const [form, setForm] = useState({ name: "", email: "" });
 
-  const fetchData = async () => setData(await getMembers());
-  useEffect(() => { fetchData(); }, []);
+  useEffect(() => {
+    loadMembers();
+  }, []);
 
-  const handleSubmit = async (formData) => {
-    if (editing) {
-      await updateMember(editing.id, formData);
-      setEditing(null);
-    } else {
-      await createMember(formData);
-    }
-    fetchData();
-  };
+  async function loadMembers() {
+    setMembers(await getMembers());
+  }
 
-  const handleDelete = async (row) => {
-    await deleteMember(row.id);
-    fetchData();
-  };
+  async function handleSubmit(e) {
+    e.preventDefault();
+    await addMember(form);
+    setForm({ name: "", email: "" });
+    loadMembers();
+  }
 
-  const columns = ['id', 'name', 'email', 'phone'];
+  async function handleDelete(id) {
+    await deleteMember(id);
+    loadMembers();
+  }
 
   return (
-    <div className="flex">
-      <Sidebar />
-      <main className="flex-1 p-6">
-        <Navbar />
-        <h1 className="text-2xl mb-4">Members</h1>
-        <EntityForm
-          fields={[
-            { name: 'name', label: 'Name' },
-            { name: 'email', label: 'Email' },
-            { name: 'phone', label: 'Phone' }
-          ]}
-          initialData={editing || {}}
-          onSubmit={handleSubmit}
-          onCancel={() => setEditing(null)}
+    <div className="page">
+      <h2>Members</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="Name"
+          value={form.name}
+          onChange={(e) => setForm({ ...form, name: e.target.value })}
         />
-        <EntityTable columns={columns} data={data} onEdit={setEditing} onDelete={handleDelete} />
-      </main>
+        <input
+          placeholder="Email"
+          value={form.email}
+          onChange={(e) => setForm({ ...form, email: e.target.value })}
+        />
+        <button type="submit">Add</button>
+      </form>
+      <ul>
+        {members.map((m) => (
+          <li key={m.id}>
+            {m.name} ({m.email})
+            <button onClick={() => handleDelete(m.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
-};
-
-export default Members;
+}
