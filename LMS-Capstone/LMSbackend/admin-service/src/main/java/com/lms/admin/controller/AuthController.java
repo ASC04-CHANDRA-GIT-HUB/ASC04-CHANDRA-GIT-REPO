@@ -40,7 +40,7 @@ public class AuthController {
         a.setName(req.name());
         a.setEmail(req.email());
         a.setPhone(req.phone());
-        a.setPasswordHash(req.password());
+        a.setPassword(req.password());  // <-- updated to plain password
         adminService.register(a);
 
         return ResponseEntity.ok(Map.of("message","Registered"));

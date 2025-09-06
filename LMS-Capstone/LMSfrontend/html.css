@@ -1,7 +1,119 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background-color: #f7f9fc; color: #333; line-height: 1.6; }
-a { color: inherit; text-decoration: none; }
-button { background-color: #3498db; border: none; color: white; padding: 10px 15px; border-radius: 5px; cursor: pointer; transition: 0.2s; }
-button:hover { background-color: #2980b9; }
-input, textarea { display: block; width: 100%; padding: 8px; margin: 8px 0; border-radius: 5px; border: 1px solid #ccc; }
-textarea { resize: vertical; }
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: "Georgia", "Times New Roman", serif; /* premium serif font */
+  background-color: #1e1a18; /* dark chocolate background */
+  color: #f1f1f1;            /* light text for contrast */
+  line-height: 1.6;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: #ffd700; /* gold hover */
+}
+
+/* Buttons */
+button {
+  background: linear-gradient(145deg, #d4af37, #ffd700); /* gold gradient */
+  border: none;
+  color: #1e1a18;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+  background: linear-gradient(145deg, #ffd700, #d4af37); /* inverted gradient */
+}
+
+/* Inputs and Textareas */
+input, textarea, select {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 10px;
+  border: 1px solid #d4af37; /* gold border */
+  background-color: rgba(62,44,28,0.85); /* glassy chocolate */
+  color: #f1f1f1;
+  font-family: "Georgia", serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+input::placeholder, textarea::placeholder, select option {
+  color: #d4af37; /* muted gold placeholders */
+  opacity: 0.8;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 10px rgba(255,215,0,0.5);
+}
+
+/* Glassy Cards for forms and lists */
+form, ul li {
+  background: rgba(46,34,28,0.85); /* glassy dark chocolate */
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  border: 1px solid #d4af37;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #ffd700; /* gold headings */
+  font-family: "Georgia", serif;
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background-color: #d4af37;
+  color: #1e1a18;
+  font-weight: bold;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* Lists & Items */
+ul li {
+  margin-bottom: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+ul li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+}
+
+/* Scrollbar (optional luxury touch) */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #2c241f;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ffd700;
+}

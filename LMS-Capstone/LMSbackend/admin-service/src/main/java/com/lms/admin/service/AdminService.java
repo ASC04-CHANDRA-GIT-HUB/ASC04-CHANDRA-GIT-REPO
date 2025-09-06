@@ -3,7 +3,6 @@ package com.lms.admin.service;
 import org.springframework.stereotype.Service;
 import com.lms.admin.repository.AdminRepository;
 import com.lms.admin.model.Admin;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.beans.factory.annotation.Value;
 import java.time.LocalDateTime;
 import java.time.Duration;
@@ -13,7 +12,6 @@ import java.util.Optional;
 public class AdminService {
 
     private final AdminRepository repo;
-    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @Value("${lock.threshold:3}")
     private int threshold;
@@ -25,19 +23,20 @@ public class AdminService {
         this.repo = repo;
     }
 
-    // Register admin with hashed password
+    // Register admin WITHOUT hashing password
     public Admin register(Admin a) {
-        a.setPasswordHash(encoder.encode(a.getPasswordHash()));
+        // plain password, no encoding
         return repo.save(a);
     }
 
+    // Find admin by email
     public Optional<Admin> findByEmail(String email) {
         return repo.findByEmail(email);
     }
 
-    // Check if plain password matches stored hash
+    // Check if plain password matches stored password
     public boolean passwordMatches(Admin a, String plain) {
-        return encoder.matches(plain, a.getPasswordHash());
+        return a.getPassword().equals(plain);
     }
 
     // Record a failed login attempt and lock account if threshold exceeded

@@ -1,19 +1,22 @@
-import { Link } from "react-router-dom";
-import "./Navbar.css";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
   return (
-    <nav className="navbar">
-      <h2 className="logo">LMS Dashboard</h2>
-      <div className="links">
-        <Link to="/">Home</Link>
-        <Link to="/acquisitions">Acquisitions</Link>
-        <Link to="/catalogue">Catalogue</Link>
-        <Link to="/circulation">Circulation</Link>
-        <Link to="/members">Members</Link>
-        <Link to="/reviews">Reviews</Link>
-        <Link to="/login">Login</Link>
-      </div>
+    <nav>
+      <Link to="/dashboard">Dashboard</Link>
+      <Link to="/acquisition">Acquisition</Link>
+      <Link to="/catalogue">Catalogue</Link>
+      <Link to="/members">Members</Link>
+      <Link to="/circulation">Circulation</Link>
+      <Link to="/reviews">Reviews</Link>
+      <button onClick={handleLogout}>Logout</button>
     </nav>
   );
 }

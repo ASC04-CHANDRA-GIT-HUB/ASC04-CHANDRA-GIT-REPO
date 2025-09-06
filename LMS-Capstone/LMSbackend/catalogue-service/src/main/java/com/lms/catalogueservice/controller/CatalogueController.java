@@ -1,17 +1,18 @@
 package com.lms.catalogueservice.controller;
 
+
+import com.lms.catalogueservice.model.Catalogue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.lms.catalogueservice.model.Catalogue;
+
 import com.lms.catalogueservice.repository.CatalogueRepository;
 import com.lms.common.util.IdGenerator;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -38,8 +39,8 @@ public class CatalogueController {
     private CatalogueRepository repo;
 
     @GetMapping
-    public ResponseEntity<List<Catalogue>> all() {
-        List<Catalogue> list = repo.findByDeletedFalse();
+    public ResponseEntity<Optional<Catalogue>> all() {
+        Optional<Catalogue> list = repo.findByDeletedFalse();
         return ResponseEntity.ok(list);
     }
 

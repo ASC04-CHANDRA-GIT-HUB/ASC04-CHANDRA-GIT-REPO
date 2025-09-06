@@ -5,58 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb1e6c7a-c7d9-41d6-8342-642d23dd6730" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/lms/gateway/config/CorsConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/com/lms/admin/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/src/main/java/com/lms/admin/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin-service/target/classes/com/lms/admin/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/target/classes/com/lms/admin/security/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/com/lms/admin/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/src/main/java/com/lms/admin/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/com/lms/admin/model/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/src/main/java/com/lms/admin/model/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/src/main/java/com/lms/admin/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/src/main/java/com/lms/admin/service/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/target/classes/com/lms/admin/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/target/classes/com/lms/admin/controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/target/classes/com/lms/admin/model/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/target/classes/com/lms/admin/model/Admin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin-service/target/classes/com/lms/admin/service/AdminService.class" beforeDir="false" afterPath="$PROJECT_DIR$/admin-service/target/classes/com/lms/admin/service/AdminService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-gateway/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-gateway/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catalogue-service/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/catalogue-service/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogue-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/catalogue-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogue-service/src/main/java/com/lms/catalogueservice/controller/CatalogueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogue-service/src/main/java/com/lms/catalogueservice/controller/CatalogueController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogue-service/src/main/java/com/lms/catalogueservice/model/Catalogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogue-service/src/main/java/com/lms/catalogueservice/model/Catalogue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogue-service/src/main/java/com/lms/catalogueservice/repository/CatalogueRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/catalogue-service/src/main/java/com/lms/catalogueservice/repository/CatalogueRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogue-service/target/catalogue-service-1.0.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogue-service/target/classes/com/lms/catalogueservice/controller/CatalogueController$RatingRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/catalogue-service/target/classes/com/lms/catalogueservice/controller/CatalogueController$RatingRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogue-service/target/classes/com/lms/catalogueservice/controller/CatalogueController.class" beforeDir="false" afterPath="$PROJECT_DIR$/catalogue-service/target/classes/com/lms/catalogueservice/controller/CatalogueController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogue-service/target/classes/com/lms/catalogueservice/model/Catalogue.class" beforeDir="false" afterPath="$PROJECT_DIR$/catalogue-service/target/classes/com/lms/catalogueservice/model/Catalogue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogue-service/target/classes/com/lms/catalogueservice/repository/CatalogueRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/catalogue-service/target/classes/com/lms/catalogueservice/repository/CatalogueRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogue-service/target/classes/com/lms/common/util/IdGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/catalogue-service/target/classes/com/lms/common/util/IdGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogue-service/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catalogue-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/catalogue-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/node_modules/.package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/_metadata.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/axios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/chunk-DRWLMN53.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/chunk-DRWLMN53.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/chunk-G3PMV62Z.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/chunk-G3PMV62Z.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/chunk-PJEEZAML.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/chunk-PJEEZAML.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/react-dom.js" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/react-dom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/react-dom_client.js" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/react-dom_client.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/react-router-dom.js" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/react-router-dom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/react.js" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/react.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/react_jsx-dev-runtime.js" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/react_jsx-dev-runtime.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/react_jsx-runtime.js" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/node_modules/.vite/deps/react_jsx-runtime.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/electron-to-chromium/chromium-versions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/node_modules/electron-to-chromium/chromium-versions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/electron-to-chromium/chromium-versions.json" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/node_modules/electron-to-chromium/chromium-versions.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/electron-to-chromium/full-chromium-versions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/node_modules/electron-to-chromium/full-chromium-versions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/electron-to-chromium/full-chromium-versions.json" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/node_modules/electron-to-chromium/full-chromium-versions.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/electron-to-chromium/full-versions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/node_modules/electron-to-chromium/full-versions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/electron-to-chromium/full-versions.json" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/node_modules/electron-to-chromium/full-versions.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/electron-to-chromium/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/node_modules/electron-to-chromium/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/electron-to-chromium/versions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/node_modules/electron-to-chromium/versions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/node_modules/electron-to-chromium/versions.json" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/node_modules/electron-to-chromium/versions.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LMSfrontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LMSfrontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/api/client.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/components/ProtectedRoute.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/src/components/ProtectedRoute.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/context/AuthContext.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/components/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/src/components/Dashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/components/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/src/components/Navbar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/src/main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/pages/Acquisitions.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/src/pages/Acquisitions.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/pages/CatalogueDetail.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/pages/Catalogues.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/src/pages/Catalogues.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/pages/Circulations.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/src/pages/Circulations.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/pages/Acquisition.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/src/pages/Acquisition.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/pages/Catalogue.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/src/pages/Catalogue.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/pages/Circulation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/src/pages/Circulation.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/src/pages/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/pages/MemberDetail.jsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/pages/Members.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/src/pages/Members.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/pages/Register.jsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/pages/Reviews.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/src/pages/Reviews.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LMSfrontend/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LMSfrontend/src/services/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../LMSfrontend/src/services/api.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,35 +73,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Application.AdminServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ServiceRegistryApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.acquisition-service.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.admin-service.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.api-gateway.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.catalogue-service.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.circulation-service.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.lms-backend [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.member-service.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.review-service.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.service-registry.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ascendion/Desktop/ASC04-CHANDRA-GIT-HUB/ASC04-CHANDRA-GIT-REPO/ASC04-CHANDRA-GIT-REPO/LMS-Capstone/LMSbackend&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.runner&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.AdminServiceApplication.executor": "Run",
+    "Application.ApiGatewayApplication.executor": "Run",
+    "Application.ServiceRegistryApplication.executor": "Run",
+    "Maven.acquisition-service.executor": "Run",
+    "Maven.admin-service.executor": "Run",
+    "Maven.api-gateway.executor": "Run",
+    "Maven.catalogue-service.executor": "Run",
+    "Maven.circulation-service.executor": "Run",
+    "Maven.lms-backend [clean].executor": "Run",
+    "Maven.member-service.executor": "Run",
+    "Maven.review-service.executor": "Run",
+    "Maven.service-registry.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Ascendion/Desktop/ASC04-CHANDRA-GIT-HUB/ASC04-CHANDRA-GIT-REPO/ASC04-CHANDRA-GIT-REPO/LMS-Capstone/LMSbackend",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Ascendion\Desktop\ASC04-CHANDRA-GIT-HUB\ASC04-CHANDRA-GIT-REPO\ASC04-CHANDRA-GIT-REPO\LMS-Capstone" />
@@ -151,7 +137,7 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.service-registry">
+  <component name="RunManager" selected="Maven.admin-service">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="review-service" />
       <method v="2">
@@ -195,7 +181,26 @@
     </configuration>
     <configuration name="admin-service" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
-        <option name="myGeneralSettings" />
+        <option name="myGeneralSettings">
+          <MavenGeneralSettings>
+            <option name="alwaysUpdateSnapshots" value="false" />
+            <option name="checksumPolicy" value="NOT_SET" />
+            <option name="customMavenHome" />
+            <option name="emulateTerminal" value="false" />
+            <option name="failureBehavior" value="NOT_SET" />
+            <option name="localRepository" value="" />
+            <option name="mavenHome" value="Use Maven wrapper" />
+            <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+            <option name="nonRecursive" value="false" />
+            <option name="outputLevel" value="INFO" />
+            <option name="printErrorStackTraces" value="false" />
+            <option name="showDialogWithAdvancedSettings" value="false" />
+            <option name="threads" />
+            <option name="useMavenConfig" value="true" />
+            <option name="userSettingsFile" value="" />
+            <option name="workOffline" value="false" />
+          </MavenGeneralSettings>
+        </option>
         <option name="myRunnerSettings" />
         <option name="myRunnerParameters">
           <MavenRunnerParameters>

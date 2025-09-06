@@ -1,13 +1,13 @@
 package com.lms.catalogueservice.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "catalogue")
 public class Catalogue {
 
     @Id
+    @GeneratedValue
     private String id;
 
     private String title;

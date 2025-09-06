@@ -1,3 +1,23 @@
-.dashboard { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
-.card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 3px 6px rgba(0,0,0,0.1); text-align: center; font-weight: bold; text-decoration: none; color: #2c3e50; transition: 0.2s; }
-.card:hover { background: #eaf2f8; transform: translateY(-3px); }
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: linear-gradient(145deg, #3e2c1c, #2c1f12); /* deep luxurious browns */
+  padding: 20px;
+  border-radius: 1.5rem; /* more rounded for premium feel */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3); /* stronger, richer shadow */
+  text-align: center;
+  font-weight: 700;
+  text-decoration: none;
+  color: #ffd700; /* golden text */
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  background: linear-gradient(145deg, #5a3c1f, #3e2c1c); /* slightly lighter on hover */
+  transform: translateY(-5px) scale(1.03); /* elegant hover lift */
+  box-shadow: 0 15px 25px rgba(0,0,0,0.5); /* deeper hover shadow */
+}

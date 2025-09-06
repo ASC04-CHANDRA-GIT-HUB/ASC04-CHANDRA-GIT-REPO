@@ -7,6 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CatalogueRepository extends JpaRepository<Catalogue, String> {
-    List<Catalogue> findByDeletedFalse();
+    Optional<Catalogue> findByDeletedFalse();
     Optional<Catalogue> findByTitleAndAuthor(String title, String author);
 }

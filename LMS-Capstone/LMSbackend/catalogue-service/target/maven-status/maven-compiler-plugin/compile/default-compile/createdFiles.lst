@@ -1,5 +1,6 @@
+com\lms\catalogueservice\controller\CatalogueController$RatingRequest.class
 com\lms\common\util\IdGenerator.class
 com\lms\catalogueservice\CatalogueServiceApplication.class
-com\lms\catalogueservice\repository\CatalogueRepository.class
 com\lms\catalogueservice\controller\CatalogueController.class
+com\lms\catalogueservice\repository\CatalogueRepository.class
 com\lms\catalogueservice\model\Catalogue.class

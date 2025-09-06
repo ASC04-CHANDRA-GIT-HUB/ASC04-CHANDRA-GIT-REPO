@@ -16,10 +16,22 @@ export async function addAcquisition(data) {
   const res = await fetch(`${API_BASE}/acquisitions/create`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
+    body: JSON.stringify({
+      title: data.title,
+      author: data.author,
+      supplier: data.supplier,
+      status: data.status,
+      description: data.description,
+    }),
   });
+
+  if (!res.ok) {
+    throw new Error(`Failed to add acquisition: ${res.status}`);
+  }
+
   return res.json();
 }
+
 
 export async function updateAcquisition(id, data) {
   const res = await fetch(`${API_BASE}/acquisitions/${id}`, {
@@ -54,6 +66,7 @@ export async function addCatalogue(data) {
   return res.json();
 }
 
+
 export async function updateCatalogue(id, data) {
   const res = await fetch(`${API_BASE}/catalogues/${id}`, {
     method: "PUT",
@@ -87,14 +100,15 @@ export async function getMember(id) {
   return res.json();
 }
 
-export async function addMember(data) {
-  const res = await fetch(`${API_BASE}/members/add`, {
+export const addMember = async (member) => {
+  const res = await fetch("http://localhost:8080/members/add", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
+    body: JSON.stringify(member),
   });
   return res.json();
-}
+};
+
 
 export async function updateMember(id, data) {
   const res = await fetch(`${API_BASE}/members/${id}`, {
@@ -124,10 +138,14 @@ export async function addCirculation(data) {
   const res = await fetch(`${API_BASE}/circulations/create`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
+    body: JSON.stringify({
+      member_id: data.memberId,
+      catalogue_id: data.catalogueId,
+    }),
   });
   return res.json();
 }
+
 
 export async function returnCirculation(id, data) {
   const res = await fetch(`${API_BASE}/circulations/${id}/return`, {
@@ -174,10 +192,21 @@ export async function addReview(data) {
   const res = await fetch(`${API_BASE}/reviews/add`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
+    body: JSON.stringify({
+      member_id: data.member_id,
+      catalogue_id: data.catalogue_id,
+      comment: data.comment,
+      rating: parseInt(data.rating, 10), // ensure it's sent as integer
+    }),
   });
+
+  if (!res.ok) {
+    throw new Error(`Failed to add review: ${res.statusText}`);
+  }
+
   return res.json();
 }
+
 
 export async function updateReview(id, data) {
   const res = await fetch(`${API_BASE}/reviews/${id}`, {
@@ -193,14 +222,22 @@ export async function deleteReview(id) {
 }
 
 // ------------------- Auth (Login/Register) -------------------
-export async function login(data) {
+// src/services/api.js
+export async function login(email, password) {
   const res = await fetch(`${API_BASE}/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
+    body: JSON.stringify({ email, password }), // ✅ correct shape
   });
+
+  if (!res.ok) {
+    throw new Error("Login failed");
+  }
+
   return res.json();
 }
+
+
 
 export async function register(data) {
   const res = await fetch(`${API_BASE}/auth/register`, {
